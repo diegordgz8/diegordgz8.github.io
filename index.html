@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Diego A. Rodríguez | Web developer</title>
+
+	<link rel="stylesheet" href="dist/style.css">
+
+	<!-- Alpine -->
+	<!-- <script src="//unpkg.com/alpinejs" defer></script> -->
+	<!-- Vue -->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<header>
+			<div
+				class="w-full h-14 fixed z-20 bg-theme-3 shadow-lg px-4 opacity-90 text-gray-100 flex justify-center items-center">
+				<!-- <div class="cursor-pointer">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+						stroke="currentColor" class="h-12 h-1w-12">
+						<path stroke-linecap="round" stroke-linejoin="round"
+							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+					</svg>
+				</div> -->
+				<nav class="flex justify-between items-center space-x-4 h-full text-xl">
+					<a href="#hero">Home</a>
+					<a href="#works">Works</a>
+					<a href="#about">About</a>
+					<!-- <a href="#contact">Contact</a> -->
+				</nav>
+			</div>
+		</header>
+		<main class="space-y-16">
+			<section id="hero">
+				<div
+					class="h-screen flex justify-center items-center md:h-auto bg-[url('/img/cover-image.png')] bg-cover">
+					<div class="bg-gray-100 bg-opacity-70 px-8 py-10 md:p-10 rounded-lg border shadow-lg md:my-40">
+						<div
+							class="flex flex-col md:flex-row justify-center items-center md:gap-x-4 gap-y-2 md:gap-y-0">
+							<img class="w-40 rounded-full shadow" src="img/profile-pic.png" alt="Profile Picture">
+							<div class="flex flex-col items-center gap-2 text-center">
+								<h2 class="text-4xl">Diego A. Rodríguez</h2>
+								<h3 class="text-2xl text-theme-3 font-semibold">Web developer</h3>
+								<p class="max-w-xs font-semibold">
+									Hi! My name is Diego. I'm a backend developer who loves programming.
+								</p>
+								<p class="max-w-xs font-semibold">
+									I
+									like
+									to work
+									with the TALL Stack.
+								</p>
+								<nav class="flex justify-between items-center gap-4 h-full text-xl">
+									<a class="w-8" href="https://github.com/diegordgz8" target="_blank">
+										<img src="img/GitHub-Mark/PNG/GitHub-Mark-32px.png" alt="">
+									</a>
+									<a class="w-8" href="https://linkedin.com/diegordgz8" target="_blank">
+										<img src="img/LinkedIn-Logos/LI-In-Bug.png" alt="">
+									</a>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="works">
+				<!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
+				<div class="container px-4 md:px-12 text-center">
+					<h1 class="text-3xl uppercase md:text-left my-6">Trabajos y proyectos</h1>
+
+					<div class="grid xl:grid-cols-2 gap-6 xl:px-8">
+
+						<div v-for="item in projects"
+							class="flex gap-4 flex-col h-full bg-white p-4 border rounded-xl shadow-lg">
+							<h2 class="text-2xl">{{item.name}}</h2>
+							<p class="max-w-xs md:max-w-none">{{item.description}}</p>
+							<p>{{item.buildWith}}</p>
+							<div class="mt-auto md:border md:rounded-xl shadow overflow-hidden">
+								<img :src="item.pictures.src" :alt="item.pictures.alt">
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section id="about">
+				<!-- About (resumen como en LinkedIn, contar sobre la experiencia y link a GitHub) -->
+				<div class="container px-8 sm:px-4 md:px-12 text-center">
+					<h1 class="text-3xl uppercase md:text-left my-6">Experiencia y Habilidades</h1>
+
+					<div class="flex flex-col md:flex-row w-full gap-8">
+						<div class="flex flex-col gap-4 md:w-1/2">
+
+							<div class="bg-white border rounded-lg shadow-lg p-4" v-for="item in skills">
+								<h2 class="font-semibold">{{item.name}}</h2>
+							</div>
+
+						</div>
+
+						<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:w-1/2">
+
+							<a v-for="item in technologies" :href="item.url">
+								<div class="bg-white border rounded-lg shadow-lg px-4 pt-4">
+									<img :src="'img/skills/'+item.img" :alt="item.name">
+									<h2 class="py-2 font-semibold">{{item.name}}</h2>
+								</div>
+							</a>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- <section id="contact" class="h-screen"> -->
+				<!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
+			<!-- </section> -->
+		</main>
+
+		<footer class="mt-8">
+			<div
+				class="w-full h-14 bg-theme-3 opacity-90 text-gray-100 text-base flex flex-col justify-center items-center">
+				<span>Página web desarrollada con Vue.js y TailwindCSS - 2022</span>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/app.js"></script>
+</body>
+
+</html>
