@@ -8,12 +8,12 @@
 
 	<title>Diego A. Rodríguez | Web developer</title>
 
-	<link rel="stylesheet" href="css/build.css">
-	<!-- <link rel="stylesheet" href="css/dev.css"> -->
+	<!-- <link rel="stylesheet" href="css/build.css"> -->
+	<link rel="stylesheet" href="css/dev.css">
 
 	<!-- Vue -->
-	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-	<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+	<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 	<!-- axios -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
@@ -34,7 +34,7 @@
 							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 					</svg>
 				</div> -->
-				<nav class="flex justify-between items-center gap-6 h-full text-xl">
+				<nav class="flex justify-between items-center gap-4 h-full text-xl">
 					<a href="#hero">{{es.menu[0]}}</a>
 					<a href="#works">{{es.menu[1]}}</a>
 					<a href="#about">{{es.menu[2]}}</a>
@@ -128,15 +128,16 @@
 
 			<section id="contact">
 				<!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
-				<div class="container px-8 sm:px-4 md:px-8 xl:px-12">
+				<div class="container px-8 sm:px-4 md:px-8 xl:px-12 text-center">
 					<h1 class="text-3xl uppercase md:text-left my-6">Contacto</h1>
 
 					<div class="grid gap-8">
 
 						<div class="flex gap-8 mx-auto">
 
-							<a v-for="item in contacts" class="flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20"
-								:href="item.link" target="_blank">
+							<a v-for="item in contacts"
+								class="flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20" :href="item.link"
+								target="_blank">
 								<img :src="item.img" :alt="item.name">
 							</a>
 						</div>
@@ -186,7 +187,8 @@
 						</div> -->
 
 						<div class="flex justify-center items-center">
-							<img class="hidden lg:block w-[1000px] rounded-lg" src="img/developing.jpg" alt="Developing">
+							<img class="hidden lg:block w-[1000px] rounded-lg" src="img/developing.jpg"
+								alt="Developing">
 						</div>
 					</div>
 
@@ -196,8 +198,9 @@
 
 		<footer class="mt-8">
 			<div
-				class="w-full h-14 bg-theme-3 opacity-90 text-gray-100 text-base flex flex-col justify-center items-center">
-				<span class="text-sm">Página web desarrollada con Vue.js y TailwindCSS - Copyright © 2022</span>
+				class="w-full h-14 bg-theme-3 opacity-90 text-gray-100 text-sm flex flex-col justify-center items-center">
+				<span class="block">Página web desarrollada con Vue.js y TailwindCSS</span>
+				<span class="block">Copyright © 2022</span>
 			</div>
 		</footer>
 	</div>
