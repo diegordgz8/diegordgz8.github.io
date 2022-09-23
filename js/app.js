@@ -3,6 +3,45 @@ const { createApp } = Vue
 createApp({
 	data() {
 		return {
+			lang: 'es',
+			es: {
+				profile: 'Desarrollador web',
+				bio: [
+					'¡Hola! Mi nombre es Diego. Soy un desarollador web que ama programar.',
+					'Suelo trabajar con el stack TALL.',
+				],
+				skills: [
+					{
+						name: 'Programación Orientada a Objetos (POO)'
+					},
+					{
+						name: 'API RESTful'
+					},
+					{
+						name: 'Inglés intermedio'
+					}
+				],
+				menu: ['Inicio', 'Trabajos', 'Habilidades', 'Contacto'],
+			},
+			en: {
+				profile: 'Web developer',
+				bio: [
+					'Hi! My name is Diego. I\'m a backend developer who loves programming.',
+					'I like to work with the TALL Stack.',
+				],
+				skills: [
+					{
+						name: 'Object Oriented Programming (OOP)'
+					},
+					{
+						name: 'API RESTful'
+					},
+					{
+						name: 'Intermediate English'
+					}
+				],
+				menu: ['Home', 'Works', 'Skills', 'Contact'],
+			},
 			projects: [
 				{
 					name: 'Zumbao',
@@ -23,26 +62,6 @@ createApp({
 						alt: 'SGC Web'
 					},
 					link: null
-				}
-			],
-			skills: [
-				{
-					name: 'Web development'
-				},
-				{
-					name: 'Backend develpment'
-				},
-				{
-					name: 'Frontend development'
-				},
-				{
-					name: 'Teamwork'
-				},
-				{
-					name: 'Love for learning'
-				},
-				{
-					name: 'English Intermediate'
 				}
 			],
 			technologies: [
@@ -97,11 +116,67 @@ createApp({
 					url: null
 				},
 				{
-					name: 'TailwindCSS',
+					name: 'Tailwind CSS',
 					img: 'tailwindcss-mark.svg',
 					url: null
 				}
-			]
+			],
+			contacts: [
+				{
+					name: 'Facebook',
+					img: 'img/logos/f_logo_RGB-Blue_58.png',
+					link: 'https://www.facebook.com/AEggo'
+				},
+				{
+					name: 'Instagram',
+					img: 'img/logos/instagram.png',
+					link: 'https://www.instagram.com/aeggo8'
+				},
+				{
+					name: 'LinkedIn',
+					img: 'img/logos/linkedin.png',
+					link: 'https://www.linkedin.com/in/diegordgz8'
+				},
+				{
+					name: 'GitHub',
+					img: 'img/logos/GitHub-Mark-120px-plus.png',
+					link: 'https://www.github.com/diegordgz8'
+				},
+			],
+			form: {
+				name: null,
+				email: null,
+				subject: 'Portfolio',
+				message: null,
+			},
 		}
+	},
+	methods: {
+		sendMail() {
+			axios.post(
+				'https://formspreezzz.io/f/xgeqkoke',
+				this.form,
+				{ 'Accept': 'application/json' }
+			).then((res) => {
+				this.form.name = null;
+				this.form.email = null;
+				this.form.message = null;
+
+				Swal.fire(
+					'Su mensaje ha sido enviado',
+					'¡Gracias por contactarme!',
+					'success'
+				)
+
+				// console.log(res);
+			}).catch(e => {
+				Swal.fire(
+					'Error',
+					'Hubo un problema al enviar su mensaje',
+					'error'
+				)
+				// console.log(e);
+			});
+		},
 	}
 }).mount('#app')
