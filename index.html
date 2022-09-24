@@ -26,31 +26,47 @@
 	<div id="app">
 		<header>
 			<div
-				class="w-full h-14 fixed z-20 bg-theme-3 shadow-lg px-4 opacity-90 text-gray-100 flex justify-center items-center">
-				<!-- <div class="cursor-pointer">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-						stroke="currentColor" class="h-12 h-1w-12">
-						<path stroke-linecap="round" stroke-linejoin="round"
-							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-					</svg>
-				</div> -->
-				<nav class="flex justify-between items-center gap-4 h-full text-xl">
-					<a href="#hero">{{es.menu[0]}}</a>
-					<a href="#works">{{es.menu[1]}}</a>
-					<a href="#about">{{es.menu[2]}}</a>
-					<a href="#contact">{{es.menu[3]}}</a>
+				class="fixed z-20 hidden md:flex justify-center items-center bg-theme-3 w-full h-14 shadow-lg px-4 opacity-90 text-gray-100 ">
+				<nav
+					class="flex flex-col md:flex-row justify-center items-center gap-4 w-full md:w-auto md:h-full text-lg">
+					<a class="w-full" href="#hero">{{es.menu[0]}}</a>
+					<a class="w-full" href="#works">{{es.menu[1]}}</a>
+					<a class="w-full" href="#about">{{es.menu[2]}}</a>
+					<a class="w-full" href="#contact">{{es.menu[3]}}</a>
 				</nav>
 			</div>
+
+			<div @click="showMenu = !showMenu" class="fixed left-1 top-1 z-30 cursor-pointer md:hidden">
+				<svg class="text-white h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+					stroke-width="1.5" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round"
+						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+				</svg>
+			</div>
+
+			<Transition>
+				<div v-show="showMenu">
+					<nav
+						class="fixed top-0 z-20 flex flex-col justify-center items-center md:hidden w-full bg-theme-3 bg-opacity-90 text-center text-white">
+						<span class="flex justify-center items-center w-full h-12 uppercase font-bold">Menú</span>
+						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#hero">{{es.menu[0]}}</a>
+						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#works">{{es.menu[1]}}</a>
+						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#about">{{es.menu[2]}}</a>
+						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#contact">{{es.menu[3]}}</a>
+					</nav>
+				</div>
+			</Transition>
 		</header>
 
-		<main class="gap-16">
+		<main class="space-y-16">
 			<section id="hero">
 				<div
 					class="flex justify-center items-center h-screen md:h-auto px-8 sm:px-4 md:px-12 bg-[url('/img/cover-image.png')] bg-cover">
 					<div class="bg-gray-100 bg-opacity-70 px-8 py-10 md:p-10 rounded-lg border shadow-lg md:my-40">
 						<div
 							class="flex flex-col md:flex-row justify-center items-center md:gap-x-4 gap-y-2 md:gap-y-0">
-							<img class="w-40 rounded-full shadow" src="img/profile-pic.png" alt="Profile Picture">
+							<img class="w-40 md:w-60 rounded-full shadow" src="img/profile-pic.png"
+								alt="Profile Picture">
 							<div class="flex flex-col items-center gap-2 text-center">
 								<h2 class="text-4xl">Diego A. Rodríguez</h2>
 								<h3 class="text-2xl text-theme-3 font-semibold">{{es.profile}}</h3>
@@ -81,16 +97,35 @@
 
 					<div class="grid xl:grid-cols-2 gap-6 xl:px-8">
 
-						<a v-for="item in projects" :href="item.link" target="_blank">
-							<div class="flex gap-4 flex-col h-full bg-white p-4 border rounded-xl shadow-lg">
-								<h2 class="text-2xl">{{item.name}}</h2>
-								<p class="max-w-xs md:max-w-none">{{item.description}}</p>
-								<p>{{item.buildWith}}</p>
-								<div class="mt-auto md:border md:rounded-xl shadow overflow-hidden">
-									<img :src="item.pictures.src" :alt="item.pictures.alt">
+						<div v-for="item in projects"
+							class="relative flex flex-col gap-2 h-full bg-white p-4 border rounded-xl shadow-lg">
+							<h2 class="text-2xl">{{item.name}}</h2>
+							<p class="max-w-xs md:max-w-none">{{item.description}}</p>
+							<p class="flex flex-wrap gap-2 font-bold">
+								<span v-for="item in item.buildWith" :class="getRandomColor()"
+									class="rounded-full px-4 py-2 text-sm text-white">{{item}}</span>
+							</p>
+							<div class="mt-auto md:border md:rounded-xl shadow overflow-hidden">
+								<img :src="item.pictures.src" :alt="item.pictures.alt">
+								<div class="flex gap-2 absolute right-1 bottom-1">
+									<a v-if="item.github" class="bg-gray-800 rounded-full shadow-lg w-12 h-12 p-2"
+										:href="item.github" target="_blank">
+										<img src="img/logos/github-light-32px.png" alt="">
+									</a>
+
+									<a v-if="item.link"
+										class="bg-gray-800 rounded-full shadow-lg w-12 h-12 p-2 text-center"
+										:href="item.link" target="_blank">
+										<svg class="w-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+											viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+											class="w-6 h-6">
+											<path stroke-linecap="round" stroke-linejoin="round"
+												d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+										</svg>
+									</a>
 								</div>
 							</div>
-						</a>
+						</div>
 
 					</div>
 				</div>
@@ -110,7 +145,7 @@
 
 						</div>
 
-						<div class="grid grid-cols-3 xl:grid-cols-4 gap-4 md:w-1/2">
+						<div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 md:w-1/2">
 
 							<a v-for="item in technologies" :href="item.url">
 								<div class="flex flex-col bg-white border rounded-lg shadow-lg px-4 pt-4 h-full">

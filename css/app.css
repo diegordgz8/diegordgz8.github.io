@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-gray-100 text-gray-800 text-lg;
+}
+
+label {
+	@apply text-sm;
+}
+
+input[type="text"], input[type="email"], textarea {
+	@apply p-2 border-2 rounded-lg focus:border focus:border-theme-2 h-10;
+}
+
+textarea {
+	@apply min-h-[6rem] resize-none;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

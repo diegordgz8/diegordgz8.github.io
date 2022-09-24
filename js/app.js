@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
 	data() {
 		return {
+			showMenu: false,
 			lang: 'es',
 			es: {
 				profile: 'Desarrollador web',
@@ -46,25 +47,32 @@ createApp({
 				{
 					name: 'Zumbao',
 					description: 'Página web autoadministrable para un restaurante de comida rápida y almuerzos.',
-					buildWith: 'Laravel, Livewire, TailwindCSS, Alpine',
+					buildWith: ['Laravel', 'Livewire', 'Tailwind CSS', 'Alpine'],
 					pictures: {
 						src: 'img/works/zumbao.png',
 						alt: 'Zumbao'
 					},
-					link: 'https://zumbaopty.com'
+					link: 'https://www.zumbaopty.com',
+					github: null,
 				},
 				{
 					name: 'SGC Web',
 					description: 'Sistema web de gestion de condominio.',
-					buildWith: 'Laravel, Livewire, TailwindCSS, Alpine',
+					buildWith: ['Laravel', 'Livewire', 'Tailwind CSS', 'Alpine'],
 					pictures: {
 						src: 'img/works/sgcweb/about.png',
 						alt: 'SGC Web'
 					},
-					link: null
+					link: null,
+					github: 'https://www.github.com/diegordgz8/sgcweb',
 				}
 			],
 			technologies: [
+				{
+					name: 'PHP',
+					img: 'php-logo.svg',
+					url: null
+				},
 				{
 					name: 'HTML',
 					img: 'html5_badge.svg',
@@ -78,11 +86,6 @@ createApp({
 				{
 					name: 'JavaScript',
 					img: 'javascript.svg',
-					url: null
-				},
-				{
-					name: 'PHP',
-					img: 'php-logo.svg',
 					url: null
 				},
 				{
@@ -149,8 +152,10 @@ createApp({
 				subject: 'Portfolio',
 				message: null,
 			},
+			colors: ['bg-green-700', 'bg-blue-700', 'bg-indigo-700', 'bg-orange-700', 'bg-red-700', 'bg-emerald-700', 'bg-lime-700', 'bg-teal-700', 'bg-cyan-700', 'bg-sky-700', 'bg-violet-700', 'bg-purple-700', 'bg-rose-700'],
 		}
 	},
+	mounted() {this.getRandomColor()},
 	methods: {
 		sendMail() {
 			axios.post(
@@ -177,6 +182,14 @@ createApp({
 				)
 				// console.log(e);
 			});
+		},
+		getRandomColor() {
+			console.log(this.getRandomInt())
+			console.log(this.colors)
+			return this.colors[this.getRandomInt(this.colors.length)];
+		},
+		getRandomInt(max) {
+			return Math.floor(Math.random() * max);
 		},
 	}
 }).mount('#app')
