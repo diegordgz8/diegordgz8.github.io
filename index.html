@@ -44,7 +44,9 @@
 				</svg>
 			</div>
 
-			<Transition>
+			<Transition name="custom-classes" enter-from-class="opacity-0"
+				enter-active-class="transition-opacity duration-[0.5s] ease"
+				leave-active-class="transition-opacity duration-[0.5s] ease-in-out" leave-to-class="opacity-0">
 				<div v-show="showMenu">
 					<nav
 						class="fixed top-0 z-20 flex flex-col justify-center items-center md:hidden w-full bg-theme-3 bg-opacity-90 text-center text-white">
