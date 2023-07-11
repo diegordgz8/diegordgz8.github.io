@@ -6,10 +6,10 @@ createApp({
 			showMenu: false,
 			lang: 'es',
 			es: {
-				profile: 'Desarrollador web',
+				profile: 'Ingeniero en Informática',
 				bio: [
 					'¡Hola! Mi nombre es Diego. Soy un desarollador web que ama programar.',
-					'Suelo trabajar con el stack TALL.',
+					'Siempre abierto a aprender nuevas cosas y mejorar cada vez más.',
 				],
 				skills: [
 					{
@@ -28,7 +28,7 @@ createApp({
 				profile: 'Web developer',
 				bio: [
 					'Hi! My name is Diego. I\'m a backend developer who loves programming.',
-					'I like to work with the TALL Stack.',
+					'Always open to learn new things and improve more and more.',
 				],
 				skills: [
 					{
@@ -99,6 +99,11 @@ createApp({
 					url: null
 				},
 				{
+					name: 'Angular',
+					img: 'angular.svg',
+					url: null
+				},
+				{
 					name: 'Vue.js',
 					img: 'vue-logo.svg',
 					url: null
@@ -125,16 +130,6 @@ createApp({
 				}
 			],
 			contacts: [
-				{
-					name: 'Facebook',
-					img: 'img/logos/f_logo_RGB-Blue_58.png',
-					link: 'https://www.facebook.com/AEggo'
-				},
-				{
-					name: 'Instagram',
-					img: 'img/logos/instagram.png',
-					link: 'https://www.instagram.com/aeggo8'
-				},
 				{
 					name: 'LinkedIn',
 					img: 'img/logos/linkedin.png',

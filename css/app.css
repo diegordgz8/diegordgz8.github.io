@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 3.5rem;
+	}
+	
 	body {
 		@apply bg-gray-100 text-gray-800 text-lg;
 	}
