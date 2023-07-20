@@ -1,9 +1,11 @@
 {
   "scripts": {
     "dev": "tailwindcss -i ./css/app.css -o ./css/dev.css --watch",
-    "build": "tailwindcss -i css/app.css -o css/style.css --minify"
+    "build": "tailwindcss -i ./css/app.css -o ./css/style.css --minify"
   },
   "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "tailwindcss": "^3.1.8"
   }
 }

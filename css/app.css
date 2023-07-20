@@ -3,28 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-	html {
-		scroll-behavior: smooth;
-		scroll-padding-top: 3.5rem;
-	}
-	
-	body {
-		@apply bg-gray-100 text-gray-800 text-lg;
-	}
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-shade-light-500 text-shade-dark-500 text-lg;
+  }
 }
 
 @layer components {
-	label {
-		@apply text-sm;
-	}
+  label {
+    @apply text-sm;
+  }
 
-	input[type="text"],
-	input[type="email"],
-	textarea {
-		@apply p-2 border-2 rounded-lg focus:border focus:border-theme-2 h-10;
-	}
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    @apply p-2 border-2 rounded-lg focus:border focus:border-theme-2 h-10;
+  }
 
-	textarea {
-		@apply min-h-[6rem] resize-none;
-	}
+  textarea {
+    @apply min-h-[6rem] resize-none;
+  }
+
+  .section-title {
+    @apply mb-10 text-3xl lg:text-5xl font-bold text-primary-500 uppercase md:text-left text-center lg:text-left;
+  }
 }

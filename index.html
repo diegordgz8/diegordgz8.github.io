@@ -1,185 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego A. Rodríguez | Web developer</title>
 
-	<title>Diego A. Rodríguez | Web developer</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/dev.css" />
 
-	<link rel="stylesheet" href="css/style.css">
-	<!-- <link rel="stylesheet" href="css/dev.css"> -->
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/dd05174127.js"
+      crossorigin="anonymous"
+    ></script>
 
-	<!-- Vue -->
-	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-	<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <!-- axios -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
 
-	<!-- axios -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- SweetAlert2 -->
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 
-	<!-- SweetAlert2 -->
-	<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-</head>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+  </head>
 
-<body>
-	<div id="app">
-		<header>
-			<div
-				class="fixed z-20 hidden md:flex justify-center items-center bg-theme-3 w-full h-14 shadow-lg px-4 opacity-90 text-gray-100 ">
-				<nav
-					class="flex flex-col md:flex-row justify-center items-center gap-4 w-full md:w-auto md:h-full text-lg">
-					<a class="w-full" href="#hero">{{es.menu[0]}}</a>
-					<a class="w-full" href="#works">{{es.menu[1]}}</a>
-					<a class="w-full" href="#about">{{es.menu[2]}}</a>
-					<a class="w-full" href="#contact">{{es.menu[3]}}</a>
-				</nav>
-			</div>
+  <body>
+    <div id="app">
+      <header>
+        <div
+          class="fixed z-20 hidden md:flex justify-center items-center bg-primary-500 text-shade-light-500 w-full h-[80px] shadow-lg px-4 opacity-90"
+        >
+          <nav
+            class="flex flex-col md:flex-row justify-center items-center gap-8 w-full md:w-auto md:h-full text-xl uppercase font-semibold"
+          >
+            <a class="w-full" :href="item.link" v-for="item in menu"
+              >{{ item.title }}</a
+            >
+          </nav>
+        </div>
 
-			<div @click="showMenu = !showMenu" class="fixed left-1 top-1 z-30 cursor-pointer md:hidden">
-				<svg class="text-white h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-					stroke-width="1.5" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round"
-						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-				</svg>
-			</div>
+        <mobile-menu :menu="menu"></mobile-menu>
+      </header>
 
-			<Transition name="custom-classes" enter-from-class="opacity-0"
-				enter-active-class="transition-opacity duration-[0.5s] ease"
-				leave-active-class="transition-opacity duration-[0.5s] ease-in-out" leave-to-class="opacity-0">
-				<div v-show="showMenu">
-					<nav
-						class="fixed top-0 z-20 flex flex-col justify-center items-center md:hidden w-full bg-theme-3 bg-opacity-90 text-center text-white">
-						<span class="flex justify-center items-center w-full h-12 uppercase font-bold">Menú</span>
-						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#hero">{{es.menu[0]}}</a>
-						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#works">{{es.menu[1]}}</a>
-						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#about">{{es.menu[2]}}</a>
-						<a class="w-full py-2 hover:bg-theme-2 font-semibold" href="#contact">{{es.menu[3]}}</a>
-					</nav>
-				</div>
-			</Transition>
-		</header>
+      <main>
+        <section id="hero">
+          <div
+            class="flex justify-center items-center h-screen md:h-auto px-8 sm:px-4 md:px-12 bg-[url('/img/cover-image.png')] bg-cover"
+          >
+            <div
+              class="bg-gray-100 bg-opacity-70 px-8 py-10 md:p-10 rounded-lg border shadow-lg md:my-40"
+            >
+              <div
+                class="max-w-[750px] flex flex-col md:flex-row justify-center items-center md:gap-x-4 gap-y-2 md:gap-y-0"
+              >
+                <img
+                  class="w-40 md:w-60 rounded-full shadow"
+                  src="img/profile-pic.png"
+                  alt="Profile Picture"
+                  loading="lazy"
+                />
+                <div
+                  class="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left"
+                >
+                  <h2 class="text-2xl lg:text-3xl font-semibold">
+                    Diego A. Rodríguez
+                  </h2>
+                  <h3
+                    class="text-3xl lg:text-4xl text-primary-500 uppercase font-semibold"
+                  >
+                    {{es.profile}}
+                  </h3>
+                  <div
+                    class="flex flex-col gap-2 lg:text-xl text-accent-dark-500"
+                  >
+                    <p v-for="p in es.bio">{{ p }}</p>
+                  </div>
+                  <nav
+                    class="flex justify-between items-center mt-4 gap-4 h-full text-xl"
+                  >
+                    <a
+                      class="w-12"
+                      href="https://github.com/diegordgz8"
+                      target="_blank"
+                    >
+                      <img src="img/logos/GitHub-Mark-120px-plus.png" />
+                    </a>
+                    <a
+                      class="w-12"
+                      href="https://linkedin.com/in/diegordgz8"
+                      target="_blank"
+                    >
+                      <img src="img/logos/linkedin.png" />
+                    </a>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-		<main class="space-y-16">
-			<section id="hero">
-				<div
-					class="flex justify-center items-center h-screen md:h-auto px-8 sm:px-4 md:px-12 bg-[url('/img/cover-image.png')] bg-cover">
-					<div class="bg-gray-100 bg-opacity-70 px-8 py-10 md:p-10 rounded-lg border shadow-lg md:my-40">
-						<div
-							class="flex flex-col md:flex-row justify-center items-center md:gap-x-4 gap-y-2 md:gap-y-0">
-							<img class="w-40 md:w-60 rounded-full shadow" src="img/profile-pic.png"
-								alt="Profile Picture">
-							<div class="flex flex-col items-center gap-2 text-center">
-								<h2 class="text-4xl">Diego A. Rodríguez</h2>
-								<h3 class="text-2xl text-theme-3 font-semibold">{{es.profile}}</h3>
-								<p class="max-w-xs font-semibold">
-									{{es.bio[0]}}
-								</p>
-								<p class="max-w-xs font-semibold">
-									{{es.bio[1]}}
-								</p>
-								<nav class="flex justify-between items-center gap-4 h-full text-xl">
-									<a class="w-8" href="https://github.com/diegordgz8" target="_blank">
-										<img src="img/logos/GitHub-Mark-32px.png" alt="">
-									</a>
-									<a class="w-8" href="https://linkedin.com/in/diegordgz8" target="_blank">
-										<img src="img/logos/linkedin.png" alt="">
-									</a>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+        <section id="works">
+          <!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
+          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12">
+            <h1 class="section-title">Trabajos y proyectos</h1>
 
-			<section id="works">
-				<!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
-				<div class="container px-8 sm:px-4 md:px-8 xl:px-12 text-center">
-					<h1 class="text-3xl uppercase md:text-left my-6">Trabajos y proyectos</h1>
+            <div class="grid xl:grid-cols-2 gap-x-8 gap-y-12">
+              <project v-for="item in projects" :project="item"></project>
+            </div>
+          </div>
+        </section>
 
-					<div class="grid xl:grid-cols-2 gap-6 xl:px-8">
+        <section id="about">
+          <!-- About (resumen como en LinkedIn, contar sobre la experiencia y link a GitHub) -->
+          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12">
+            <h1 class="section-title">Experiencia y Habilidades</h1>
 
-						<div v-for="item in projects"
-							class="relative flex flex-col gap-2 h-full bg-white p-4 border rounded-xl shadow-lg">
-							<h2 class="text-2xl">{{item.name}}</h2>
-							<p class="max-w-xs md:max-w-none">{{item.description}}</p>
-							<p class="flex flex-wrap gap-2 font-bold">
-								<span v-for="item in item.buildWith" :class="getRandomColor()"
-									class="rounded-full px-4 py-2 text-sm text-white">{{item}}</span>
-							</p>
-							<div class="mt-auto md:border md:rounded-xl shadow overflow-hidden">
-								<img :src="item.pictures.src" :alt="item.pictures.alt">
-								<div class="flex gap-2 absolute right-1 bottom-1">
-									<a v-if="item.github" class="bg-gray-800 rounded-full shadow-lg w-12 h-12 p-2"
-										:href="item.github" target="_blank">
-										<img src="img/logos/github-light-32px.png" alt="">
-									</a>
+            <div class="flex flex-col md:flex-row w-full gap-x-12 gap-y-8">
+              <ul class="flex flex-col gap-8 md:w-1/2 lg:w-2/5">
+                <li class="flex items-center" v-for="item in es.skills">
+                  <i
+                    class="far fa-lightbulb text-4xl mr-4 text-accent-dark-500"
+                  ></i>
+                  <h2 class="font-semibold uppercase lg:text-2xl md:text-left">
+                    {{ item }}
+                  </h2>
+                </li>
+              </ul>
 
-									<a v-if="item.link"
-										class="bg-gray-800 rounded-full shadow-lg w-12 h-12 p-2 text-center"
-										:href="item.link" target="_blank">
-										<svg class="w-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-											viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-											class="w-6 h-6">
-											<path stroke-linecap="round" stroke-linejoin="round"
-												d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-										</svg>
-									</a>
-								</div>
-							</div>
-						</div>
+              <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 md:w-1/2 lg:grid-cols-4 lg:w-3/5 xl:grid-cols-6 gap-6">
+                <a
+                  class="lg:hover:scale-110 transition-transform duration-500"
+                  v-for="item in technologies"
+                  :href="item.url"
+                >
+                  <img
+                    class="w-full aspect-square object-contain object-center"
+                    :src="'img/skills/'+item.img"
+                    :alt="item.name"
+                  />
+                  <h2 class="py-2 font-semibold text-xl text-center">
+                    {{ item.name }}
+                  </h2>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
-					</div>
-				</div>
-			</section>
+        <section id="contact">
+          <!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
+          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12 text-center">
+            <h1 class="section-title">Contacto</h1>
 
-			<section id="about">
-				<!-- About (resumen como en LinkedIn, contar sobre la experiencia y link a GitHub) -->
-				<div class="container px-8 sm:px-4 md:px-8 xl:px-12 text-center">
-					<h1 class="text-3xl uppercase md:text-left my-6">Experiencia y Habilidades</h1>
+            <div class="grid gap-8">
+              <div class="flex gap-4 mx-auto">
+                <a
+                  v-for="item in contacts"
+                  class="flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20"
+                  :href="item.link"
+                  target="_blank"
+                >
+                  <img :src="item.img" :alt="item.name" />
+                </a>
+              </div>
 
-					<div class="flex flex-col md:flex-row w-full gap-4">
-						<div class="flex flex-col gap-4 md:w-1/2">
-
-							<div class="bg-white border rounded-lg shadow-lg p-4" v-for="item in es.skills">
-								<h2 class="font-semibold">{{item.name}}</h2>
-							</div>
-
-						</div>
-
-						<div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 md:w-1/2">
-
-							<a v-for="item in technologies" :href="item.url">
-								<div class="flex flex-col bg-white border rounded-lg shadow-lg px-4 pt-4 h-full">
-									<div class="flex flex-col justify-center items-center h-full">
-										<img :src="'img/skills/'+item.img" :alt="item.name">
-									</div>
-									<h2 class="py-2 font-semibold">{{item.name}}</h2>
-								</div>
-							</a>
-
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="contact">
-				<!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
-				<div class="container px-8 sm:px-4 md:px-8 xl:px-12 text-center">
-					<h1 class="text-3xl uppercase md:text-left my-6">Contacto</h1>
-
-					<div class="grid gap-8">
-
-						<div class="flex gap-8 mx-auto">
-
-							<a v-for="item in contacts"
-								class="flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20" :href="item.link"
-								target="_blank">
-								<img :src="item.img" :alt="item.name">
-							</a>
-						</div>
-
-						<!-- <div
+              <!-- <div
 							class="bg-white border rounded-lg shadow-lg p-4 w-full max-w-xl mx-auto text-center md:text-left">
 							<div class="flex justify-center items-center">
 								<a aria-label="Chat on WhatsApp" href="https://wa.me/584121237362" target="_blank">
@@ -223,26 +215,35 @@
 
 						</div> -->
 
-						<div class="flex justify-center items-center">
-							<img class="hidden lg:block w-[1000px] rounded-lg" src="img/developing.jpg"
-								alt="Developing">
-						</div>
-					</div>
+              <div class="flex justify-center items-center">
+                <img
+                  class="hidden lg:block w-[1000px] rounded-lg"
+                  src="img/developing.jpg"
+                  alt="Developing"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-				</div>
-			</section>
-		</main>
+      <footer class="mt-8">
+        <div
+          class="w-full h-[90px] md:h-[70px] bg-primary-500 opacity-90 text-shade-light-500 md:text-xl flex flex-col justify-center items-center text-center"
+        >
+          <span>Página web desarrollada con Vue.js y TailwindCSS</span>
+          <!-- <span class="block">Copyright © {{ getYear() }}</span> -->
+        </div>
+      </footer>
 
-		<footer class="mt-8">
-			<div
-				class="w-full h-14 bg-theme-3 opacity-90 text-gray-100 text-sm flex flex-col justify-center items-center">
-				<span class="block">Página web desarrollada con Vue.js y TailwindCSS</span>
-				<span class="block">Copyright © 2022</span>
-			</div>
-		</footer>
-	</div>
+      <!-- <mobile-menu :menu="menu"></mobile-menu> -->
+    </div>
 
-	<script src="js/app.js"></script>
-</body>
+    <script type="module">
+      import { createApp } from "vue";
+      import App from "./app.js";
 
+      createApp(App).mount("#app");
+    </script>
+  </body>
 </html>
