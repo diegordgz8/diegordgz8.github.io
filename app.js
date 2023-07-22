@@ -10,6 +10,8 @@ export default {
   },
   data() {
     return {
+      pagePosition: "HEADER",
+      darkMode: true,
       lang: "es",
       es: {
         profile: "Ingeniero en Informática",
@@ -163,43 +165,60 @@ export default {
           link: "https://www.github.com/diegordgz8",
         },
       ],
-      // form: {
-      //   name: null,
-      //   email: null,
-      //   subject: "Portfolio",
-      //   message: null,
-      // },
     };
   },
-  mounted() {},
+  beforeMount() {
+    window.addEventListener("scroll", this.scrollHandler);
+
+    this.toggleDarkMode();
+  },
   methods: {
-    // sendMail() {
-    //   axios
-    //     .post("https://formspreezzz.io/f/xgeqkoke", this.form, {
-    //       Accept: "application/json",
-    //     })
-    //     .then((res) => {
-    //       this.form.name = null;
-    //       this.form.email = null;
-    //       this.form.message = null;
-
-    //       Swal.fire(
-    //         "Su mensaje ha sido enviado",
-    //         "¡Gracias por contactarme!",
-    //         "success"
-    //       );
-
-    //       // console.log(res);
-    //     })
-    //     .catch((e) => {
-    //       Swal.fire("Error", "Hubo un problema al enviar su mensaje", "error");
-    //       // console.log(e);
-    //     });
-    // },
     getYear() {
       const date = new Date();
       const year = date.getFullYear();
       return year;
+    },
+    scrollHandler() {
+      const body = document.body,
+        html = document.documentElement;
+
+      const height = Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      );
+
+      const scrollY = window.scrollY;
+      const screenBottom = height - 420;
+
+      if (scrollY < 300) this.pagePosition = "HEADER";
+      else if (scrollY + window.innerHeight > screenBottom)
+        this.pagePosition = "FOOTER";
+      else this.pagePosition = "BODY";
+    },
+    toggleDarkMode() {
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      if (this.darkMode) {
+        // Whenever the user explicitly chooses dark mode
+        localStorage.theme = "dark";
+        document.documentElement.classList.add("dark");
+      } else {
+        // Whenever the user explicitly chooses light mode
+        localStorage.theme = "light";
+        document.documentElement.classList.remove("dark");
+      }
     },
   },
 };

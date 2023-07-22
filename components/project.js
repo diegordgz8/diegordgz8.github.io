@@ -21,7 +21,7 @@ export default {
                 :href="project.github"
                 target="_blank"
                 >
-                    <img src="img/logos/github-light-32px.png" alt="" />
+                    <img src="img/logos/github-mark-white.svg" alt="" />
                 </a>
 
                 <a

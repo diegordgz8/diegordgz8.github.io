@@ -15,9 +15,9 @@ export default {
   template:
     /*html*/
     `
-    <div>
+    <div class="md:hidden">
         <button
-            class="fixed right-0 top-0 z-30 p-4 grid place-content-center md:hidden"
+            class="fixed right-0 top-0 z-30 p-4 grid place-content-center"
             @click="open = true"
         >
             <i class="fas fa-bars text-4xl text-white"></i>

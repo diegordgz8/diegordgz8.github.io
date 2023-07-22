@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
 
     <title>Diego A. Rodríguez | Web developer</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <!-- <link rel="stylesheet" href="css/dev.css" /> -->
 
     <!-- Fontawesome -->
@@ -31,121 +31,140 @@
     </script>
   </head>
 
-  <body>
+  <body @scroll="scrollHandler">
     <div id="app">
       <header>
         <div
-          class="fixed z-20 hidden md:flex justify-center items-center bg-primary-500 text-shade-light-500 w-full h-[80px] shadow-lg px-4 opacity-90"
+          class="fixed z-20 flex h-[80px] w-full items-center justify-between px-4 text-shade-light-500 opacity-90 md:bg-primary-500 md:shadow-lg"
         >
+          <div class="hidden md:block"></div>
+
           <nav
-            class="flex flex-col md:flex-row justify-center items-center gap-8 w-full md:w-auto md:h-full text-xl uppercase font-semibold"
+            class="hidden w-full flex-col items-center justify-center gap-8 text-xl font-semibold uppercase md:flex md:h-full md:w-auto md:flex-row"
           >
             <a class="w-full" :href="item.link" v-for="item in menu"
               >{{ item.title }}</a
             >
           </nav>
-        </div>
+          <label class="switch">
+            <input
+              type="checkbox"
+              v-model="darkMode"
+              @change="toggleDarkMode"
+            />
+            <span class="slider round"></span>
+          </label>
 
-        <mobile-menu :menu="menu"></mobile-menu>
+          <mobile-menu :menu="menu"></mobile-menu>
+        </div>
       </header>
 
       <main>
         <section id="hero">
           <div
-            class="flex justify-center items-center h-screen md:h-auto px-8 sm:px-4 md:px-12 bg-[url('/img/cover-image.png')] bg-cover"
+            class="container relative flex items-center justify-center py-20 px-8 sm:px-8 md:px-12 md:pt-[120px] lg:h-screen lg:justify-start lg:py-0"
           >
-            <div
-              class="bg-gray-100 bg-opacity-70 px-8 py-10 md:p-10 rounded-lg border shadow-lg md:my-40"
+            <Transition
+              name="custom-classes"
+              enter-active-class="transition-opacity duration-700"
+              leave-active-class="transition-opacity duration-700"
+              enter-from-class="opacity-0"
+              enter-to-class="opacity-100"
+              leave-from-class="opacity-100"
+              leave-to-class="opacity-0"
             >
               <div
-                class="max-w-[750px] flex flex-col md:flex-row justify-center items-center md:gap-x-4 gap-y-2 md:gap-y-0"
+                class="light fixed -top-20 right-0 -z-50 aspect-square h-auto w-full -rotate-90 lg:top-0 lg:h-full lg:w-auto lg:rotate-0"
+                v-show="pagePosition == 'HEADER'"
+              ></div>
+            </Transition>
+            <div
+              class="flex max-w-[1200px] flex-col items-center justify-center gap-y-4 gap-x-8 lg:flex-row"
+            >
+              <img
+                class="w-40 rounded-full shadow md:w-60 xl:w-72"
+                src="img/profile-pic.png"
+                alt="Profile Picture"
+                loading="lazy"
+              />
+              <div
+                class="flex flex-col items-center gap-2 text-center lg:items-start lg:text-left"
               >
-                <img
-                  class="w-40 md:w-60 rounded-full shadow"
-                  src="img/profile-pic.png"
-                  alt="Profile Picture"
-                  loading="lazy"
-                />
-                <div
-                  class="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left"
+                <h2 class="text-2xl font-semibold lg:text-4xl">
+                  Diego A. Rodríguez
+                </h2>
+                <h3
+                  class="text-3xl font-bold uppercase text-primary-500 dark:text-accent-light-500 lg:text-4xl xl:text-5xl"
                 >
-                  <h2 class="text-2xl lg:text-3xl font-semibold">
-                    Diego A. Rodríguez
-                  </h2>
-                  <h3
-                    class="text-3xl lg:text-4xl text-primary-500 uppercase font-semibold"
+                  {{es.profile}}
+                </h3>
+                <div
+                  class="flex flex-col gap-2 text-accent-dark-500 dark:text-shade-light-500 lg:text-xl xl:text-2xl"
+                >
+                  <p v-for="p in es.bio">{{ p }}</p>
+                </div>
+                <div
+                  class="mt-4 flex h-full items-center justify-between gap-4 text-xl"
+                >
+                  <a
+                    class="w-12"
+                    href="https://github.com/diegordgz8"
+                    target="_blank"
                   >
-                    {{es.profile}}
-                  </h3>
-                  <div
-                    class="flex flex-col gap-2 lg:text-xl text-accent-dark-500"
+                    <img
+                      :src="darkMode ? 'img/logos/github-mark-white.svg' : 'img/logos/github-mark.svg'"
+                    />
+                  </a>
+                  <a
+                    class="w-12"
+                    href="https://linkedin.com/in/diegordgz8"
+                    target="_blank"
                   >
-                    <p v-for="p in es.bio">{{ p }}</p>
-                  </div>
-                  <nav
-                    class="flex justify-between items-center mt-4 gap-4 h-full text-xl"
-                  >
-                    <a
-                      class="w-12"
-                      href="https://github.com/diegordgz8"
-                      target="_blank"
-                    >
-                      <img src="img/logos/GitHub-Mark-120px-plus.png" />
-                    </a>
-                    <a
-                      class="w-12"
-                      href="https://linkedin.com/in/diegordgz8"
-                      target="_blank"
-                    >
-                      <img src="img/logos/linkedin.png" />
-                    </a>
-                  </nav>
+                    <img src="img/logos/linkedin.png" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
         <section id="works">
           <!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
-          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12">
+          <div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
             <h1 class="section-title">Trabajos y proyectos</h1>
-
-            <div class="grid xl:grid-cols-2 gap-x-8 gap-y-12">
+            <div class="grid gap-x-8 gap-y-12 xl:grid-cols-2">
               <project v-for="item in projects" :project="item"></project>
             </div>
           </div>
         </section>
-
         <section id="about">
           <!-- About (resumen como en LinkedIn, contar sobre la experiencia y link a GitHub) -->
-          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12">
+          <div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
             <h1 class="section-title">Experiencia y Habilidades</h1>
-
-            <div class="flex flex-col md:flex-row w-full gap-x-12 gap-y-8">
+            <div class="flex w-full flex-col gap-x-12 gap-y-8 md:flex-row">
               <ul class="flex flex-col gap-8 md:w-1/2 lg:w-2/5">
                 <li class="flex items-center" v-for="item in es.skills">
                   <i
-                    class="far fa-lightbulb text-4xl mr-4 text-accent-dark-500"
+                    class="far fa-lightbulb mr-4 text-4xl text-accent-dark-500"
                   ></i>
-                  <h2 class="font-semibold uppercase lg:text-2xl md:text-left">
+                  <h2 class="font-semibold uppercase md:text-left lg:text-2xl">
                     {{ item }}
                   </h2>
                 </li>
               </ul>
-
-              <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 md:w-1/2 lg:grid-cols-4 lg:w-3/5 xl:grid-cols-6 gap-6">
+              <div
+                class="grid grid-cols-3 gap-6 sm:grid-cols-4 md:w-1/2 md:grid-cols-3 lg:w-3/5 lg:grid-cols-4 xl:grid-cols-6"
+              >
                 <a
-                  class="lg:hover:scale-110 transition-transform duration-500"
+                  class="transition-transform duration-500 lg:hover:scale-110"
                   v-for="item in technologies"
                   :href="item.url"
                 >
                   <img
-                    class="w-full aspect-square object-contain object-center"
+                    class="aspect-square w-full object-contain object-center"
                     :src="'img/skills/'+item.img"
                     :alt="item.name"
                   />
-                  <h2 class="py-2 font-semibold text-xl text-center">
+                  <h2 class="py-2 text-center text-xl font-semibold">
                     {{ item.name }}
                   </h2>
                 </a>
@@ -153,71 +172,36 @@
             </div>
           </div>
         </section>
-
         <section id="contact">
           <!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
-          <div class="container px-8 py-16 sm:px-4 md:px-8 xl:px-12 text-center">
+          <div
+            class="container py-12 text-center sm:px-4 md:px-8 lg:py-16 xl:px-12"
+          >
             <h1 class="section-title">Contacto</h1>
-
             <div class="grid gap-8">
-              <div class="flex gap-4 mx-auto">
+              <div class="mx-auto flex gap-4">
                 <a
-                  v-for="item in contacts"
-                  class="flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20"
-                  :href="item.link"
+                  class="flex h-12 w-12 items-center justify-center lg:h-20 lg:w-20"
+                  href="https://www.linkedin.com/in/diegordgz8"
                   target="_blank"
                 >
-                  <img :src="item.img" :alt="item.name" />
+                  <img src="img/logos/linkedin.png" />
+                </a>
+
+                <a
+                  class="flex h-12 w-12 items-center justify-center lg:h-20 lg:w-20"
+                  href="https://www.github.com/diegordgz8"
+                  target="_blank"
+                >
+                  <img
+                    :src="darkMode ? 'img/logos/github-mark-white.svg' : 'img/logos/github-mark.svg'"
+                  />
                 </a>
               </div>
 
-              <!-- <div
-							class="bg-white border rounded-lg shadow-lg p-4 w-full max-w-xl mx-auto text-center md:text-left">
-							<div class="flex justify-center items-center">
-								<a aria-label="Chat on WhatsApp" href="https://wa.me/584121237362" target="_blank">
-									<img alt="Chat on WhatsApp"
-										src="img/whatsapp-button.svg" />
-								</a>
-							</div>
-
-							<hr class="my-4">
-
-							<form @submit.prevent="sendMail">
-								<h2 class="mb-4 text-center text-2xl">...o envíame un mensaje aquí!</h2>
-
-								<div class="grid md:grid-cols-2 gap-4">
-									<div class="flex flex-col">
-										<label>
-											Nombre:
-										</label>
-										<input v-model="form.name" type="text">
-									</div>
-									<div class="flex flex-col">
-										<label>
-											Correo electrónico:
-										</label>
-										<input v-model="form.email" type="email">
-									</div>
-									<div class="flex flex-col sm:col-span-2">
-										<label>
-											Mensaje:
-										</label>
-										<textarea v-model="form.message"></textarea>
-									</div>
-									<input type="hidden" name="_language" value="lang" />
-									<button
-										class="sm:col-span-2 bg-theme-3 rounded-lg text-white hover:bg-theme-2 focus:ring-black text-2xl font-semibold sm:mx-auto px-16 py-2"
-										type="submit">
-										Enviar
-									</button>
-								</div>
-							</form>
-
-						</div> -->
-
-              <div class="flex justify-center items-center">
+              <div class="flex items-center justify-center">
                 <img
-                  class="hidden lg:block w-[1000px] rounded-lg"
+                  class="hidden w-[1000px] rounded-lg lg:block"
                   src="img/developing.jpg"
                   alt="Developing"
                 />
@@ -229,14 +213,40 @@
 
       <footer class="mt-8">
         <div
-          class="w-full h-[90px] md:h-[70px] bg-primary-500 opacity-90 text-shade-light-500 md:text-xl flex flex-col justify-center items-center text-center"
+          class="flex h-[90px] w-full flex-col items-center justify-center bg-primary-500 text-center text-shade-light-500 opacity-90 md:h-[70px] md:text-xl"
         >
           <span>Página web desarrollada con Vue.js y TailwindCSS</span>
           <!-- <span class="block">Copyright © {{ getYear() }}</span> -->
         </div>
       </footer>
 
-      <!-- <mobile-menu :menu="menu"></mobile-menu> -->
+      <Transition
+        name="custom-classes"
+        enter-active-class="transition-opacity duration-700"
+        leave-active-class="transition-opacity duration-700"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div
+          class="fixed bottom-8 right-8 z-10 hidden flex-col items-end gap-4 lg:flex"
+          v-show="pagePosition == 'BODY'"
+        >
+          <a class="w-12" href="https://github.com/diegordgz8" target="_blank">
+            <img
+              :src="darkMode ? 'img/logos/github-mark-white.svg' : 'img/logos/github-mark.svg'"
+            />
+          </a>
+          <a
+            class="w-12"
+            href="https://linkedin.com/in/diegordgz8"
+            target="_blank"
+          >
+            <img src="img/logos/linkedin.png" />
+          </a>
+        </div>
+      </Transition>
     </div>
 
     <script type="module">

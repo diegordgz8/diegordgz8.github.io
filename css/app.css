@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-shade-light-500 text-shade-dark-500 text-lg;
+    @apply bg-shade-light-500 text-lg text-shade-dark-500 dark:bg-shade-dark-500 dark:text-shade-light-500;
   }
 }
 
@@ -21,14 +21,97 @@
   input[type="text"],
   input[type="email"],
   textarea {
-    @apply p-2 border-2 rounded-lg focus:border focus:border-theme-2 h-10;
+    @apply h-10 rounded-lg border-2 p-2 focus:border focus:border-theme-2;
   }
 
   textarea {
     @apply min-h-[6rem] resize-none;
   }
 
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: theme(colors.shade-light.500);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    @apply bg-accent-light-500;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px theme(colors.accent-light.500);
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
   .section-title {
-    @apply mb-10 text-3xl lg:text-5xl font-bold text-primary-500 uppercase md:text-left text-center lg:text-left;
+    @apply mb-10 text-center text-3xl font-bold uppercase text-primary-500 dark:text-accent-light-500 md:text-left lg:text-left lg:text-5xl;
+  }
+
+  .light {
+    background: radial-gradient(
+      circle at 100%,
+      transparent 25%,
+      theme(colors.accent-light.300) 50%,
+      transparent 75%
+    );
+  }
+
+  html.dark .light {
+    background: radial-gradient(
+      circle at 100%,
+      transparent 20%,
+      theme(colors.accent-light.900) 35%,
+      theme(colors.accent-light.800) 50%,
+      theme(colors.accent-light.900) 65%,
+      transparent 80%
+    );
   }
 }
