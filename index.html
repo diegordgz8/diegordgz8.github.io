@@ -83,7 +83,7 @@
             >
               <img
                 class="w-40 rounded-full shadow md:w-60 xl:w-72"
-                src="img/profile-pic.png"
+                src="img/profile-pic.webp"
                 alt="Profile Picture"
                 loading="lazy"
               />
@@ -127,19 +127,30 @@
             </div>
           </div>
         </section>
+
+        <section id="jobs">
+          <div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
+            <h1 class="section-title">Experiencia laboral</h1>
+            <div class="grid gap-x-8 gap-y-12 xl:grid-cols-1">
+              <job v-for="item in jobs" :job="item"></job>
+            </div>
+          </div>
+        </section>
+
         <section id="works">
           <!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
           <div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
-            <h1 class="section-title">Trabajos y proyectos</h1>
+            <h1 class="section-title">Proyectos</h1>
             <div class="grid gap-x-8 gap-y-12 xl:grid-cols-2">
               <project v-for="item in projects" :project="item"></project>
             </div>
           </div>
         </section>
+
         <section id="about">
           <!-- About (resumen como en LinkedIn, contar sobre la experiencia y link a GitHub) -->
           <div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
-            <h1 class="section-title">Experiencia y Habilidades</h1>
+            <h1 class="section-title">Conocimientos y Tecnologías</h1>
             <div class="flex w-full flex-col gap-x-12 gap-y-8 md:flex-row">
               <ul class="flex flex-col gap-8 md:w-1/2 lg:w-2/5">
                 <li class="flex items-center" v-for="item in es.skills">
@@ -172,6 +183,7 @@
             </div>
           </div>
         </section>
+
         <section id="contact">
           <!-- Contact (colocar email con dominio, formulario de contacto y enlaces a redes) -->
           <div
@@ -201,7 +213,7 @@
 
               <div class="flex items-center justify-center">
                 <img
-                  class="hidden w-[1000px] rounded-lg lg:block"
+                  class="w-full h-[250px] md:h-[300px] object-cover rounded-lg"
                   src="img/developing.jpg"
                   alt="Developing"
                 />

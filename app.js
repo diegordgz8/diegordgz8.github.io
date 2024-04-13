@@ -1,10 +1,12 @@
 import MobileMenu from "./components/mobile-menu.js";
+import Job from "./components/job.js";
 import ProjectGallery from "./components/project-gallery.js";
 import Project from "./components/project.js";
 
 export default {
   components: {
     MobileMenu,
+    Job,
     ProjectGallery,
     Project,
   },
@@ -28,7 +30,8 @@ export default {
       },
       menu: [
         { title: "Inicio", link: "#hero" },
-        { title: "Trabajos", link: "#works" },
+        { title: "Experiencia", link: "#jobs" },
+        { title: "Proyectos", link: "#works" },
         { title: "Habilidades", link: "#about" },
         { title: "Contacto", link: "#contact" },
       ],
@@ -51,6 +54,48 @@ export default {
         ],
         menu: ["Home", "Works", "Skills", "Contact"],
       },
+      jobs: [
+        {
+          name: "Alma V",
+          position: "Desarrollador frontend",
+          dateFrom: '2023-08',
+          dateTo: null,
+          description: "Como desarrollador frontend, me encargo de maquetar o modificar las páginas web que nos encargan como empresa, además de cargar los contenidos de las mismas. Además, en proyectos nuevos, también participo y colaboro en el análisis inicial de los requerimientos del proyecto.",
+          buildWith: ["WordPress", "Elementor", "Laravel", "HTML", "CSS", "JavaScript"],
+          pictures: {
+            src: "img/jobs/almav.png",
+          },
+          link: "https://diegordgz8.github.io/pricing-page/",
+          github: "https://www.github.com/diegordgz8/pricing-page",
+        },
+        {
+          name: "Strive Enterprise",
+          position: "Programador",
+          dateFrom: '2022-12',
+          dateTo: '2023-05',
+          description: "Luego de aprobar el Bootcamp, como programador en la empresa, realicé varios sitios web responsivos para diversos clientes utilizando WordPress y el desarrollo de temas de Shopify para tiendas. Encargándome de la maquetación de las páginas con los lenguajes HTML, CSS, JS y Shopify Liquid, y de las funcionalidades a través de los plugin de WordPress y las apps de Shopify. Además, también administré los productos de las tiendas de Shopify en las que trabajé.",
+          buildWith: ["WordPress", "Shopify", "HTML", "CSS", "Bootstrap", "JavaScript"],
+          pictures: {
+            src: "img/jobs/strive.png",
+          },
+          link: "https://diegordgz8.github.io/pricing-page/",
+          github: "https://www.github.com/diegordgz8/pricing-page",
+        },
+        {
+          name: "CEAR Latinoamericano",
+          position: "Desarrollador web",
+          dateFrom: '2021-12',
+          dateTo: '2022-03',
+          description: `Como parte del equipo de desarrollo de SISTELAR, colaboré el en desarrollo del sistema de arbitraje SISTELAR. Realicé actividades como escribir código en backend y frontend con supervisión del empleador, realizar modificaciones a la base de datos y colaborar con el resto del equipo para idear soluciones y planificar el desarrollo de las funcionalidades requeridas. Como mayor logro, quiero destacar que dirigí el desarrollo de una de las funcionalidades del sistema con apoyo de otro miembro junior del equipo, la cual fue desarrollada e implementada con éxito.`,
+          buildWith: ["Laravel", "Livewire", "Bootstrap", "Alpine.js"],
+          pictures: {
+            src: "img/jobs/cear.png",
+            alt: "SGC Web",
+          },
+          link: null,
+          github: "https://www.github.com/diegordgz8/sgcweb",
+        },
+      ],
       projects: [
         // {
         // 	name: 'Zumbao',

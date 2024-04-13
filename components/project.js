@@ -42,7 +42,7 @@ export default {
         <div class="flex flex-wrap justify-center lg:justify-start gap-2 font-bold mt-4">
             <pill v-for="item in this.project.buildWith" :label="item" color="bg-accent-dark-500"></pill>
         </div>
-        <h2 class="text-3xl lg:text-5xl font-bold text-center lg:text-left mt-4">{{ this.project.name }}</h2>
+        <h2 class="text-3xl lg:text-4xl font-bold text-center lg:text-left mt-4">{{ this.project.name }}</h2>
         <p class="text-center lg:text-left text-lg lg:text-2xl mt-2 opacity-70">{{project.description}}</p>
     </div>
     `,
