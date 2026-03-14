@@ -1,12 +1,13 @@
 ---
-import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro"
-import { Image } from "astro:assets";
-import Button from "../../components/Button.astro";
-import { Icon } from "astro-icon/components";
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Button from '../../components/Button.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
-    const projects = await getCollection("projects");
+    const projects = await getCollection('projects');
 
     return projects.map((project) => ({
         params: { id: project.slug },
@@ -16,43 +17,81 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data, slug } = project;
-const { name, description, cover, stack, link } = data;
+const { name, description, cover, stack, link, pictures } = data;
 
 const { Content } = await render(project);
 ---
 
 <Layout title={` ${name} - Proyectos `} description={`${description}`}>
-    <div class="container flex flex-col sm:flex-row gap-4 justify-between mt-4 lg:mt-20">
+    <div class="container mt-4 flex flex-col justify-between gap-4 sm:flex-row lg:mt-20">
         <Button class="btn-outline" href="/#portfolio">
-            <Icon name="mdi:arrow-left" class="w-6 h-6" />
+            <Icon name="mdi:arrow-left" class="h-6 w-6" />
             Regresar
         </Button>
 
-        {link && (
-            <Button class="btn-solid" href={`${link}`} target="_blank">
-                Ver proyecto
-                <Icon name="mdi:link" class="w-6 h-6" />
-            </Button>
-        )}
+        {
+            link && (
+                <Button class="btn-solid" href={`${link}`} target="_blank">
+                    Ver proyecto
+                    <Icon name="mdi:link" class="h-6 w-6" />
+                </Button>
+            )
+        }
     </div>
 
-    <div class="container flex flex-col xl:flex-row gap-10 py-12">
-        <aside class="w-full">
-            <Image class={ 'aspect-video object-cover object-top rounded-lg' } src={ cover } alt={ name } transition:name={`img-${slug}`}></Image>
+    <div class="container flex flex-col gap-10 py-12 xl:flex-row">
+        <aside class="flex w-full flex-col gap-4">
+            {
+                cover && (
+                    <Image
+                        class="aspect-video rounded-lg object-cover object-top"
+                        src={cover}
+                        alt={name}
+                        transition:name={`img-${slug}`}
+                        data-lightbox
+                    />
+                )
+            }
+            {
+                pictures && pictures.length > 0 && (
+                    <div class="grid grid-cols-2 gap-4">
+                        {pictures.map((pic, i) => (
+                            <Image
+                                class="aspect-video rounded-lg object-cover object-top"
+                                src={pic}
+                                alt={`${name} - captura ${i + 1}`}
+                                data-lightbox
+                            />
+                        ))}
+                    </div>
+                )
+            }
         </aside>
 
         <main class="w-full">
-            <h1 class="text-primary-500 dark:text-teal-500 text-4xl lg:text-6xl text-center lg:text-left font-semibold">{ name }</h1>
+            <h1
+                class="text-primary-500 text-center text-4xl font-semibold lg:text-left lg:text-6xl dark:text-teal-500"
+            >
+                {name}
+            </h1>
 
-            <div class="flex flex-wrap justify-center lg:justify-start gap-2 font-bold mt-4">
-                {stack.map(item => (
-                    <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">{item}</span>
-                ))}
+            <div class="mt-4 flex flex-wrap justify-center gap-2 font-bold lg:justify-start">
+                {
+                    stack.map((item) => (
+                        <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">
+                            {item}
+                        </span>
+                    ))
+                }
             </div>
 
-            <div class="prose dark:prose-invert prose-headings:text-center lg:prose-headings:text-left mt-8 lg:mt-4">
+            <div
+                class="prose dark:prose-invert prose-headings:text-center lg:prose-headings:text-left mt-8 lg:mt-4"
+            >
                 <Content />
             </div>
         </main>
     </div>
+
+    <Lightbox />
 </Layout>

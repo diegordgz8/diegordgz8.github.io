@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+>
+    <button
+        id="lb-close"
+        type="button"
+        aria-label="Cerrar"
+        class="absolute top-4 right-4 cursor-pointer text-white/70 transition-colors hover:text-white"
+    >
+        <Icon name="mdi:close" class="h-8 w-8" />
+    </button>
+
+    <button
+        id="lb-prev"
+        type="button"
+        aria-label="Anterior"
+        class="absolute left-4 cursor-pointer text-white/70 transition-colors hover:text-white"
+    >
+        <Icon name="mdi:chevron-left" class="h-10 w-10" />
+    </button>
+
+    <img id="lb-img" class="max-h-[90vh] max-w-[90vw] rounded-lg object-contain" src="" alt="" />
+
+    <button
+        id="lb-next"
+        type="button"
+        aria-label="Siguiente"
+        class="absolute right-4 cursor-pointer text-white/70 transition-colors hover:text-white"
+    >
+        <Icon name="mdi:chevron-right" class="h-10 w-10" />
+    </button>
+</div>
+
+<script>
+    const setupLightbox = () => {
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+        const btnClose = document.getElementById('lb-close');
+        const btnPrev = document.getElementById('lb-prev');
+        const btnNext = document.getElementById('lb-next');
+        if (!lightbox || !lbImg || !btnClose || !btnPrev || !btnNext) return;
+
+        const images = Array.from(document.querySelectorAll<HTMLImageElement>('[data-lightbox]'));
+        let current = 0;
+
+        const show = (index: number) => {
+            current = (index + images.length) % images.length;
+            lbImg.src = images[current].src;
+            lbImg.alt = images[current].alt;
+            btnPrev.classList.toggle('hidden', images.length <= 1);
+            btnNext.classList.toggle('hidden', images.length <= 1);
+        };
+
+        const open = (index: number) => {
+            show(index);
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        };
+
+        const close = () => {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        };
+
+        images.forEach((img, i) => {
+            img.classList.add('cursor-zoom-in');
+            img.addEventListener('click', () => open(i));
+        });
+
+        btnClose.addEventListener('click', close);
+        btnPrev.addEventListener('click', () => show(current - 1));
+        btnNext.addEventListener('click', () => show(current + 1));
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) close();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowLeft') show(current - 1);
+            if (e.key === 'ArrowRight') show(current + 1);
+        });
+    };
+
+    setupLightbox();
+    document.addEventListener('astro:after-swap', setupLightbox);
+</script>
