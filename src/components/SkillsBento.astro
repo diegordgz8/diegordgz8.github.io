@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 interface Skill {
     name: string;
@@ -10,67 +10,104 @@ interface Skill {
 }
 
 const techs: Skill[] = [
-    { name: "HTML",         icon: "mdi:language-html5",       color: "bg-orange-900",   span: "col-span-1" },
-    { name: "CSS",          icon: "mdi:language-css3",        color: "bg-blue-900",     span: "col-span-1" },
-    { name: "JavaScript",   icon: "mdi:language-javascript",  color: "bg-amber-800",    span: "col-span-2 sm:col-span-1" },
-    { name: "PHP",          icon: "mdi:language-php",         color: "bg-indigo-900",   span: "col-span-1" },
-    { name: "Laravel",      icon: "mdi:laravel",              color: "bg-red-900",      span: "col-span-2 row-span-2" },
-    { name: "Livewire",     svg: "/logos/livewire.svg",       color: "bg-pink-900",     span: "col-span-1" },
-    { name: "Alpine.js",    svg: "/logos/alpinejs.svg",       color: "bg-slate-800",    span: "col-span-1" },
-    { name: "Tailwind CSS", icon: "mdi:tailwind",             color: "bg-sky-900",      span: "col-span-2 sm:col-span-1" },
-    { name: "Bootstrap",    icon: "mdi:bootstrap",            color: "bg-violet-900",   span: "col-span-1" },
-    { name: "Astro",        svg: "/logos/astro.svg",          color: "bg-stone-800",    span: "col-span-1" },
-    { name: "WordPress",    icon: "mdi:wordpress",            color: "bg-slate-700",    span: "col-span-2 row-span-2" },
-    { name: "Elementor",    svg: "/logos/elementor.svg",      color: "bg-rose-900",     span: "col-span-1" },
-    { name: "Crocoblock",   svg: "/logos/crocoblock.svg",     color: "bg-teal-900",     span: "col-span-1" },
-    { name: "Trello",       icon: "mdi:trello",               color: "bg-blue-950",     span: "col-span-1" },
+    { name: 'HTML', icon: 'mdi:language-html5', color: 'bg-orange-900', span: 'col-span-1' },
+    { name: 'CSS', icon: 'mdi:language-css3', color: 'bg-blue-900', span: 'col-span-1' },
+    {
+        name: 'JavaScript',
+        icon: 'mdi:language-javascript',
+        color: 'bg-amber-800',
+        span: 'col-span-2 sm:col-span-1',
+    },
+    { name: 'PHP', icon: 'mdi:language-php', color: 'bg-indigo-900', span: 'col-span-1' },
+    { name: 'Laravel', icon: 'mdi:laravel', color: 'bg-red-900', span: 'col-span-2 row-span-2' },
+    { name: 'Livewire', svg: '/logos/livewire.svg', color: 'bg-pink-900', span: 'col-span-1' },
+    { name: 'Alpine.js', svg: '/logos/alpinejs.svg', color: 'bg-slate-800', span: 'col-span-1' },
+    {
+        name: 'Tailwind CSS',
+        icon: 'mdi:tailwind',
+        color: 'bg-sky-900',
+        span: 'col-span-2 sm:col-span-1',
+    },
+    { name: 'Bootstrap', icon: 'mdi:bootstrap', color: 'bg-violet-900', span: 'col-span-1' },
+    { name: 'Astro', svg: '/logos/astro.svg', color: 'bg-stone-800', span: 'col-span-1' },
+    {
+        name: 'WordPress',
+        icon: 'mdi:wordpress',
+        color: 'bg-slate-700',
+        span: 'col-span-2 row-span-2',
+    },
+    { name: 'Elementor', svg: '/logos/elementor.svg', color: 'bg-rose-900', span: 'col-span-1' },
+    { name: 'Crocoblock', svg: '/logos/crocoblock.svg', color: 'bg-teal-900', span: 'col-span-1' },
+    { name: 'Trello', icon: 'mdi:trello', color: 'bg-blue-950', span: 'col-span-1' },
 ];
 
 const knowledge = [
-    "Programación Orientada a Objetos (POO)",
-    "API RESTful",
-    "Diseño y Desarrollo de Base de Datos",
-    "Metodología Kanban",
-    "Inglés Intermedio",
+    'Programación Orientada a Objetos (POO)',
+    'API RESTful',
+    'Diseño y Desarrollo de Base de Datos',
+    'Metodología Kanban',
+    'Inglés Intermedio',
 ];
 ---
 
 <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
     <!-- Knowledge card -->
-    <div class="col-span-2 row-span-2 flex flex-col justify-center gap-4 rounded-2xl bg-primary-500 p-6 text-surface-500 dark:bg-muted-800 dark:text-surface-400 sm:col-span-3 lg:col-span-2">
-        <h3 class="text-lg font-bold uppercase tracking-wide text-teal-500">Conocimientos</h3>
+    <div
+        class="bg-primary-500 text-surface-500 dark:bg-muted-800 dark:text-surface-400 col-span-2 row-span-2 flex flex-col justify-center gap-4 rounded-2xl p-6 sm:col-span-3 lg:col-span-2"
+    >
+        <h3 class="text-lg font-bold tracking-wide text-teal-500 uppercase">Conocimientos</h3>
         <ul class="flex flex-col gap-3">
-            {knowledge.map(item => (
-                <li class="flex items-start gap-2">
-                    <Icon name="mdi:lightbulb-on-outline" class="mt-0.5 h-5 w-5 shrink-0 text-teal-500" />
-                    <span>{item}</span>
-                </li>
-            ))}
+            {
+                knowledge.map((item) => (
+                    <li class="flex items-start gap-2">
+                        <Icon
+                            name="mdi:lightbulb-on-outline"
+                            class="mt-0.5 h-5 w-5 shrink-0 text-teal-500"
+                        />
+                        <span>{item}</span>
+                    </li>
+                ))
+            }
         </ul>
     </div>
 
     <!-- Tech cards -->
-    {techs.map(tech => (
-        <div class:list={[
-            "group flex flex-col items-center justify-center gap-2 rounded-2xl p-4 text-white transition-transform duration-300 hover:scale-105",
-            tech.color,
-            tech.span,
-        ]}>
-            {tech.icon ? (
-                <Icon name={tech.icon} class:list={[
-                    "h-10 w-10 drop-shadow-md",
-                    tech.span?.includes("row-span-2") && "h-16 w-16",
-                ]} />
-            ) : tech.svg ? (
-                <img src={tech.svg} alt={tech.name} class:list={[
-                    "h-10 w-10 drop-shadow-md",
-                    tech.span?.includes("row-span-2") && "h-16 w-16",
-                ]} />
-            ) : null}
-            <span class:list={[
-                "text-center font-semibold",
-                tech.span?.includes("row-span-2") && "text-lg",
-            ]}>{tech.name}</span>
-        </div>
-    ))}
+    {
+        techs.map((tech) => (
+            <div
+                class:list={[
+                    'group flex flex-col items-center justify-center gap-2 rounded-2xl p-4 text-white transition-transform duration-300 hover:scale-105',
+                    tech.color,
+                    tech.span,
+                ]}
+            >
+                {tech.icon ? (
+                    <Icon
+                        name={tech.icon}
+                        class:list={[
+                            'h-10 w-10 drop-shadow-md',
+                            tech.span?.includes('row-span-2') && 'h-16 w-16',
+                        ]}
+                    />
+                ) : tech.svg ? (
+                    <img
+                        src={tech.svg}
+                        alt={tech.name}
+                        class:list={[
+                            'h-10 w-10 drop-shadow-md',
+                            tech.span?.includes('row-span-2') && 'h-16 w-16',
+                        ]}
+                    />
+                ) : null}
+                <span
+                    class:list={[
+                        'text-center font-semibold',
+                        tech.span?.includes('row-span-2') && 'text-lg',
+                    ]}
+                >
+                    {tech.name}
+                </span>
+            </div>
+        ))
+    }
 </div>

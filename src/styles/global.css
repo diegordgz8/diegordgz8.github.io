@@ -1,149 +1,149 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "@fontsource/geist-mono/400.css";
-@import "@fontsource/geist-mono/700.css";
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/700.css';
 
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --container-max-width: 1280px;
+    --container-max-width: 1280px;
 
-  --font-geist-mono: "Geist Mono", monospace;
+    --font-geist-mono: 'Geist Mono', monospace;
 
-  --color-brand: oklch(0.721 0.157 195.44);
-  --color-brand-dark: oklch(0.588 0.158 196.53);
-  --color-theme-2: #00b4fc;
+    --color-brand: oklch(0.721 0.157 195.44);
+    --color-brand-dark: oklch(0.588 0.158 196.53);
+    --color-theme-2: #00b4fc;
 
-  --color-surface-50: #fdfcfc;
-  --color-surface-100: #fbf9fa;
-  --color-surface-200: #f7f3f5;
-  --color-surface-300: #f4edef;
-  --color-surface-400: #f0e7ea;
-  --color-surface-500: #ece1e5;
-  --color-surface-600: #bdb4b7;
-  --color-surface-700: #8e8789;
-  --color-surface-800: #5e5a5c;
-  --color-surface-900: #2f2d2e;
+    --color-surface-50: #fdfcfc;
+    --color-surface-100: #fbf9fa;
+    --color-surface-200: #f7f3f5;
+    --color-surface-300: #f4edef;
+    --color-surface-400: #f0e7ea;
+    --color-surface-500: #ece1e5;
+    --color-surface-600: #bdb4b7;
+    --color-surface-700: #8e8789;
+    --color-surface-800: #5e5a5c;
+    --color-surface-900: #2f2d2e;
 
-  --color-teal-50: #eff7f9;
-  --color-teal-100: #e0eff4;
-  --color-teal-200: #c0dfe9;
-  --color-teal-300: #a1cedd;
-  --color-teal-400: #81bed2;
-  --color-teal-500: #62aec7;
-  --color-teal-600: #4e8b9f;
-  --color-teal-700: #3b6877;
-  --color-teal-800: #274650;
-  --color-teal-900: #142328;
+    --color-teal-50: #eff7f9;
+    --color-teal-100: #e0eff4;
+    --color-teal-200: #c0dfe9;
+    --color-teal-300: #a1cedd;
+    --color-teal-400: #81bed2;
+    --color-teal-500: #62aec7;
+    --color-teal-600: #4e8b9f;
+    --color-teal-700: #3b6877;
+    --color-teal-800: #274650;
+    --color-teal-900: #142328;
 
-  --color-primary-50: #e8ebef;
-  --color-primary-100: #d2d7de;
-  --color-primary-200: #a4afbd;
-  --color-primary-300: #77869d;
-  --color-primary-400: #495e7c;
-  --color-primary-500: #1c365b;
-  --color-primary-600: #162b49;
-  --color-primary-700: #112037;
-  --color-primary-800: #0b1624;
-  --color-primary-900: #060b12;
+    --color-primary-50: #e8ebef;
+    --color-primary-100: #d2d7de;
+    --color-primary-200: #a4afbd;
+    --color-primary-300: #77869d;
+    --color-primary-400: #495e7c;
+    --color-primary-500: #1c365b;
+    --color-primary-600: #162b49;
+    --color-primary-700: #112037;
+    --color-primary-800: #0b1624;
+    --color-primary-900: #060b12;
 
-  --color-muted-50: #eff0f2;
-  --color-muted-100: #dfe1e5;
-  --color-muted-200: #bfc3cc;
-  --color-muted-300: #9fa6b2;
-  --color-muted-400: #7f8899;
-  --color-muted-500: #5f6a7f;
-  --color-muted-600: #4c5566;
-  --color-muted-700: #39404c;
-  --color-muted-800: #262a33;
-  --color-muted-900: #131519;
+    --color-muted-50: #eff0f2;
+    --color-muted-100: #dfe1e5;
+    --color-muted-200: #bfc3cc;
+    --color-muted-300: #9fa6b2;
+    --color-muted-400: #7f8899;
+    --color-muted-500: #5f6a7f;
+    --color-muted-600: #4c5566;
+    --color-muted-700: #39404c;
+    --color-muted-800: #262a33;
+    --color-muted-900: #131519;
 
-  --color-surface-dark-50: #e8e7e8;
-  --color-surface-dark-100: #d1d0d1;
-  --color-surface-dark-200: #a3a1a3;
-  --color-surface-dark-300: #757174;
-  --color-surface-dark-400: #474246;
-  --color-surface-dark-500: #191318;
-  --color-surface-dark-600: #140f13;
-  --color-surface-dark-700: #0f0b0e;
-  --color-surface-dark-800: #0a080a;
-  --color-surface-dark-900: #050405;
+    --color-surface-dark-50: #e8e7e8;
+    --color-surface-dark-100: #d1d0d1;
+    --color-surface-dark-200: #a3a1a3;
+    --color-surface-dark-300: #757174;
+    --color-surface-dark-400: #474246;
+    --color-surface-dark-500: #191318;
+    --color-surface-dark-600: #140f13;
+    --color-surface-dark-700: #0f0b0e;
+    --color-surface-dark-800: #0a080a;
+    --color-surface-dark-900: #050405;
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
 
-    font-family: var(--font-geist-mono);
-    font-feature-settings: "ss01" on;
-  }
+        font-family: var(--font-geist-mono);
+        font-feature-settings: 'ss01' on;
+    }
 
-  body {
-    @apply bg-surface-500 text-surface-dark-500 dark:bg-surface-dark-500 dark:text-surface-500;
-  }
+    body {
+        @apply bg-surface-500 text-surface-dark-500 dark:bg-surface-dark-500 dark:text-surface-500;
+    }
 }
 
 @layer components {
-  a.btn {
-    @apply inline-flex justify-center items-center gap-2 rounded-lg border-2 border-brand dark:border-brand-dark px-8 py-2 text-lg font-medium text-brand dark:text-brand-dark transition-colors duration-300 hover:bg-brand dark:hover:bg-brand-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-brand dark:focus:ring-brand-dark focus:ring-offset-2;
-  }
+    a.btn {
+        @apply border-brand dark:border-brand-dark text-brand dark:text-brand-dark hover:bg-brand dark:hover:bg-brand-dark focus:ring-brand dark:focus:ring-brand-dark inline-flex items-center justify-center gap-2 rounded-lg border-2 px-8 py-2 text-lg font-medium transition-colors duration-300 hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none;
+    }
 
-  a.btn-solid {
-    @apply bg-brand dark:bg-brand-dark border-brand dark:border-brand-dark text-white hover:bg-brand dark:hover:bg-brand-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-brand dark:focus:ring-brand-dark focus:ring-offset-2;
-  }
+    a.btn-solid {
+        @apply bg-brand dark:bg-brand-dark border-brand dark:border-brand-dark hover:bg-brand dark:hover:bg-brand-dark focus:ring-brand dark:focus:ring-brand-dark text-white hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none;
+    }
 
-  a.btn-outline {
-    @apply border-brand dark:border-brand-dark text-brand dark:text-brand-dark hover:bg-brand dark:hover:bg-brand-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-brand dark:focus:ring-brand-dark focus:ring-offset-2;
-  }
+    a.btn-outline {
+        @apply border-brand dark:border-brand-dark text-brand dark:text-brand-dark hover:bg-brand dark:hover:bg-brand-dark focus:ring-brand dark:focus:ring-brand-dark hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none;
+    }
 
-  label {
-    @apply text-sm;
-  }
+    label {
+        @apply text-sm;
+    }
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    @apply h-10 rounded-lg border-2 p-2 focus:border focus:border-theme-2;
-  }
+    input[type='text'],
+    input[type='email'],
+    textarea {
+        @apply focus:border-theme-2 h-10 rounded-lg border-2 p-2 focus:border;
+    }
 
-  textarea {
-    @apply min-h-[6rem] resize-none;
-  }
+    textarea {
+        @apply min-h-24 resize-none;
+    }
 
-  .nav-link.active {
-    @apply text-brand dark:text-brand-dark;
-  }
+    .nav-link.active {
+        @apply text-brand dark:text-brand-dark;
+    }
 
-  .section-title {
-    @apply mb-10 text-center text-3xl font-bold uppercase text-primary-500 dark:text-teal-500 md:text-left lg:text-left lg:text-5xl;
-  }
+    .section-title {
+        @apply text-primary-500 mb-10 text-center text-3xl font-bold uppercase md:text-left lg:text-left lg:text-5xl dark:text-teal-500;
+    }
 
-  .bg-ring {
-    background: radial-gradient(
-      circle at 100%,
-      transparent 25%,
-      theme(colors.teal.300) 50%,
-      transparent 75%
-    );
-  }
+    .bg-ring {
+        background: radial-gradient(
+            circle at 100%,
+            transparent 25%,
+            theme(colors.teal.300) 50%,
+            transparent 75%
+        );
+    }
 
-  html.dark .bg-ring {
-    background: radial-gradient(
-      circle at 100%,
-      transparent 20%,
-      theme(colors.teal.900) 35%,
-      theme(colors.teal.800) 50%,
-      theme(colors.teal.900) 65%,
-      transparent 80%
-    );
-  }
+    html.dark .bg-ring {
+        background: radial-gradient(
+            circle at 100%,
+            transparent 20%,
+            theme(colors.teal.900) 35%,
+            theme(colors.teal.800) 50%,
+            theme(colors.teal.900) 65%,
+            transparent 80%
+        );
+    }
 
-  .container {
-    max-width: var(--container-max-width);
-    margin-inline: auto;
-    padding-inline: 1.5rem;
-  }
+    .container {
+        max-width: var(--container-max-width);
+        margin-inline: auto;
+        padding-inline: 1.5rem;
+    }
 }

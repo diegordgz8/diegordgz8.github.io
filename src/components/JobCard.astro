@@ -15,18 +15,36 @@ interface Props {
 const { name, position, dateFrom, dateTo, description, stack, cover } = Astro.props;
 ---
 
-<article class="lg:hover:translate-x-4 transition-transform duration-500 flex flex-col items-center gap-4 md:flex-row md:items-start lg:gap-8">
-    {cover && <Image class="w-[200px] sm:w-[300px] md:w-[150px] lg:w-[200px] aspect-4/3 rounded-xl bg-surface-500 object-contain object-center p-4" src={cover} alt={name} />}
+<article
+    class="flex flex-col items-center gap-4 transition-transform duration-500 md:flex-row md:items-start lg:gap-8 lg:hover:translate-x-4"
+>
+    {
+        cover && (
+            <Image
+                class="bg-surface-500 aspect-4/3 w-50 rounded-xl object-contain object-center p-4 sm:w-75 md:w-37.5 lg:w-50"
+                src={cover}
+                alt={name}
+            />
+        )
+    }
 
-    <div class="relative overflow-hidden flex flex-col items-center md:items-start">
-        <span class="text-2xl text-center md:text-left">{name}</span>
-        <h2 class="text-primary-500 dark:text-teal-500 text-3xl md:text-4xl font-bold text-center md:text-left">{position}</h2>
+    <div class="relative flex flex-col items-center overflow-hidden md:items-start">
+        <span class="text-center text-2xl md:text-left">{name}</span>
+        <h2
+            class="text-primary-500 text-center text-3xl font-bold md:text-left md:text-4xl dark:text-teal-500"
+        >
+            {position}
+        </h2>
         <span class="mt-4 text-center md:text-left">{dateFrom} - {dateTo}</span>
-        <div class="flex flex-wrap justify-center md:justify-start gap-2 font-bold mt-4">
-            {stack.map(item => (
-                <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">{item}</span>
-            ))}
+        <div class="mt-4 flex flex-wrap justify-center gap-2 font-bold md:justify-start">
+            {
+                stack.map((item) => (
+                    <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">
+                        {item}
+                    </span>
+                ))
+            }
         </div>
-        <p class="text-center md:text-left text-lg mt-4 opacity-70">{description}</p>
+        <p class="mt-4 text-center text-lg opacity-70 md:text-left">{description}</p>
     </div>
 </article>
