@@ -19,7 +19,10 @@ jobs.sort((a, b) => {
     return dateB - dateA;
 });
 
-const projects = await getCollection('projects');
+const projectOrder = ['sgcweb', 'gerardi', 'portfolio', 'bonsai'];
+const projects = (await getCollection('projects')).sort(
+    (a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug),
+);
 ---
 
 <Layout
