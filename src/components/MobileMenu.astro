@@ -4,20 +4,19 @@ import NavLink from './NavLink.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
 ---
 
-<button
-    id="mobile-menu-toggle"
-    type="button"
-    aria-label="Abrir menú"
-    class="text-surface-500 relative z-60 cursor-pointer lg:hidden"
->
-    <Icon id="menu-open-icon" name="mdi:menu" class="h-8 w-8" />
-    <Icon id="menu-close-icon" name="mdi:close" class="hidden h-8 w-8" />
-</button>
-
 <div
     id="mobile-menu"
-    class="bg-primary-500/95 text-surface-500 fixed inset-0 left-auto z-50 flex h-dvh w-full max-w-80 translate-x-full flex-col items-end justify-between gap-8 p-8 pt-24 text-xl font-semibold uppercase backdrop-blur-sm transition-transform duration-300 lg:hidden"
+    class="bg-primary-500/95 text-surface-500 pointer-events-none fixed inset-0 left-auto z-50 flex h-dvh w-full max-w-80 translate-x-full flex-col items-end justify-between gap-8 p-8 pt-24 text-xl font-semibold uppercase opacity-0 backdrop-blur-sm transition-all duration-300 lg:hidden"
 >
+    <button
+        id="mobile-menu-close"
+        type="button"
+        aria-label="Cerrar menú"
+        class="absolute top-6 right-6 cursor-pointer"
+    >
+        <Icon name="mdi:close" class="h-8 w-8" />
+    </button>
+
     <nav class="flex flex-col items-end gap-8 text-right">
         <NavLink href="/#hero" label="Inicio" />
         <NavLink href="/#jobs" label="Experiencia" />
@@ -46,30 +45,23 @@ import ThemeSwitch from './ThemeSwitch.astro';
     const setupMobileMenu = () => {
         const toggle = document.getElementById('mobile-menu-toggle');
         const menu = document.getElementById('mobile-menu');
-        const openIcon = document.getElementById('menu-open-icon');
-        const closeIcon = document.getElementById('menu-close-icon');
-        if (!toggle || !menu || !openIcon || !closeIcon) return;
+        const closeBtn = document.getElementById('mobile-menu-close');
+        if (!toggle || !menu || !closeBtn) return;
+
+        const open = () => {
+            menu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+            menu.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+            document.body.classList.add('overflow-hidden');
+        };
 
         const close = () => {
-            menu.classList.add('translate-x-full');
-            menu.classList.remove('translate-x-0');
-            openIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
+            menu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+            menu.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
             document.body.classList.remove('overflow-hidden');
         };
 
-        toggle.addEventListener('click', () => {
-            const isOpen = menu.classList.contains('translate-x-0');
-            if (isOpen) {
-                close();
-            } else {
-                menu.classList.remove('translate-x-full');
-                menu.classList.add('translate-x-0');
-                openIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            }
-        });
+        toggle.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
 
         menu.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', close);
