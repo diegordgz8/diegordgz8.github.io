@@ -1,11 +1,169 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Image from 'astro/components/Image.astro';
+import Button from '../components/Button.astro';
+import { Icon } from 'astro-icon/components';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import profilePicture from '../assets/img/profile-pic.webp';
+import contactCover from '../assets/img/developing.jpg';
+import JobCard from '../components/JobCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillsBento from '../components/SkillsBento.astro';
+
+const jobs = await getCollection('jobs');
+jobs.sort((a, b) => {
+	const dateA = new Date(a.data.dateFrom).getTime();
+	const dateB = new Date(b.data.dateFrom).getTime();
+
+	return dateB - dateA;
+})
+
+const projects = await getCollection('projects');
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Diego A. Rodríguez - Portafolio" description="Portafolio de Diego Rodríguez, desarrollador web especializado en Laravel. Explora mis proyectos y experiencia laboral.">
+	<section id="hero">
+		<div
+		class="container relative flex items-center justify-center sm:py-28 px-8 sm:px-8 md:px-12 md:pt-[120px] lg:h-screen lg:justify-start lg:py-0"
+		>
+			<div
+			id="hero-ring"
+			class="bg-ring fixed -top-20 right-0 -z-50 aspect-square h-auto w-full -rotate-90 transition-opacity duration-500 lg:top-0 lg:h-full lg:w-auto lg:rotate-0"
+			></div>
+
+			<div class="flex max-w-[1200px] flex-col items-center justify-center gap-y-8 lg:gap-y-12 gap-x-8 lg:items-start">
+				<div class="relative w-40 md:w-60 xl:w-72">
+					<div class="absolute inset-0 rounded-full ring-6 ring-offset-16 ring-brand dark:ring-brand-dark ring-offset-surface-500 dark:ring-offset-surface-dark-500 blur-md"></div>
+					<Image class={ 'relative w-full rounded-full shadow hover:scale-110 transition duration-300 ring-4 ring-offset-16 ring-brand/10 hover:ring-brand/50 dark:ring-brand-dark/10 dark:hover:ring-brand-dark/60 ring-offset-surface-500 dark:ring-offset-surface-dark-500 ease-in-out' } src={ profilePicture } alt="Diego Rodríguez's portrait"></Image>
+				</div>
+
+				<div class="flex flex-col items-center gap-2 text-center lg:items-start lg:text-left">
+					<h1 class="text-xl sm:text-2xl font-semibold uppercase lg:text-4xl">Diego A. Rodríguez</h1>
+					<p
+						class="text-3xl font-bold text-primary-500 dark:text-teal-500 lg:text-4xl xl:text-5xl"
+					>Transformo ideas complejas en soluciones web de alto rendimiento</p>
+					<div
+						class="flex flex-col gap-2 text-muted-500 dark:text-surface-600 lg:text-xl"
+					>
+						<p>Soy Diego, Technical Lead e Ingeniero especializado en PHP y Laravel. Mi enfoque combina la arquitectura técnica con el liderazgo de equipos para entregar software que optimiza procesos y escala con tu negocio.</p>
+					</div>
+					<div
+						class="mt-4 flex flex-col sm:flex-row w-full sm:w-auto h-full items-stretch sm:items-center justify-between gap-4 text-xl"
+					>
+						<Button href="#portfolio" class="btn-solid">
+							<Icon name="mdi:briefcase" class="w-6 h-6" />
+							Ver Proyectos
+						</Button>
+
+						<Button href="/Desarrollador Web CV [es].pdf" target="_blank" class="btn-outline">
+							<Icon name="mdi:download" class="w-6 h-6" />
+							Descargar CV
+						</Button>
+					</div>
+					<div
+						class="mt-4 flex h-full items-center justify-between gap-4 text-xl"
+					>
+						<a
+							href="https://github.com/diegordgz8"
+							target="_blank"
+						>
+					
+							<Icon name="mdi:github" class="w-12 h-12 text-black dark:text-white" />
+						</a>
+						<a
+						href="https://linkedin.com/in/diegordgz8"
+						target="_blank"
+						>
+							<Icon name="mdi:linkedin" class="w-12 h-12 text-[#0A66C2]" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="jobs">
+		<div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
+			<h2 class="section-title">Experiencia laboral</h2>
+			<div class="grid gap-x-8 gap-y-12 xl:grid-cols-1">
+				
+				{jobs.map(job => <JobCard {...job.data} />)}
+			</div>
+		</div>
+	</section>
+
+	<section id="portfolio">
+		<!-- Works (incluir los proyectos que he hecho. Recomendable copiar una web existente. No colocar más de 10 trabajos y escoger los mejores y más llamativos) -->
+		<div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
+		<h2 class="section-title">Proyectos</h2>
+		<div class="grid gap-x-8 gap-y-12 xl:grid-cols-2">
+
+			{projects.map(project => <ProjectCard slug={project.slug} {...project.data} />)}
+		</div>
+		</div>
+	</section>
+
+	<section id="skills">
+		<div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
+			<h2 class="section-title">Habilidades</h2>
+			<SkillsBento />
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="container py-12 sm:px-4 md:px-8 lg:py-16 xl:px-12">
+			<h2 class="section-title">Contacto</h2>
+			<div class="grid gap-8 md:grid-cols-2">
+				<div class="flex flex-col gap-6">
+					<p class="text-lg text-muted-500 dark:text-surface-600">
+						¿Tienes un proyecto en mente? Escríbeme y hablemos sobre cómo puedo ayudarte.
+					</p>
+					<div class="flex flex-col gap-4">
+						<a
+							href="https://wa.me/584245458256"
+							target="_blank"
+							class="flex items-center gap-3 rounded-xl bg-green-800 px-6 py-4 text-white transition-colors hover:bg-green-700"
+						>
+							<Icon name="mdi:whatsapp" class="h-6 w-6" />
+							<span class="font-semibold">+58 424 545 8256</span>
+						</a>
+						<a
+							href="https://linkedin.com/in/diegordgz8"
+							target="_blank"
+							class="flex items-center gap-3 rounded-xl bg-[#0A66C2] px-6 py-4 text-white transition-colors hover:bg-[#004182]"
+						>
+							<Icon name="mdi:linkedin" class="h-6 w-6" />
+							<span class="font-semibold">LinkedIn</span>
+						</a>
+						<a
+							href="https://github.com/diegordgz8"
+							target="_blank"
+							class="flex items-center gap-3 rounded-xl bg-surface-dark-400 px-6 py-4 text-white transition-colors hover:bg-surface-dark-300"
+						>
+							<Icon name="mdi:github" class="h-6 w-6" />
+							<span class="font-semibold">GitHub</span>
+						</a>
+					</div>
+				</div>
+				<div class="flex items-center justify-center">
+					<Image class="aspect-[2.4/1] w-full object-cover rounded-lg" src={ contactCover } alt="Developing" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		const jobs = document.getElementById('jobs');
+		const ring = document.getElementById('hero-ring');
+
+		if (jobs && ring) {
+			const observer = new IntersectionObserver(([entry]) => {
+				const isAboveJobs = jobs.getBoundingClientRect().top > 0;
+				ring.style.opacity = (!entry.isIntersecting && isAboveJobs) ? '1' : '0';
+			}, { rootMargin: '0px 0px -30% 0px' });
+
+			observer.observe(jobs);
+		}
+	</script>
 </Layout>

@@ -1,0 +1,32 @@
+---
+import Image from 'astro/components/Image.astro';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+    name: string;
+    position: string;
+    dateFrom: string;
+    dateTo?: string;
+    description: string;
+    stack: string[];
+    cover?: ImageMetadata;
+}
+
+const { name, position, dateFrom, dateTo, description, stack, cover } = Astro.props;
+---
+
+<article class="lg:hover:translate-x-4 transition-transform duration-500 flex flex-col items-center gap-4 md:flex-row md:items-start lg:gap-8">
+    {cover && <Image class="w-[200px] sm:w-[300px] md:w-[150px] lg:w-[200px] aspect-4/3 rounded-xl bg-surface-500 object-contain object-center p-4" src={cover} alt={name} />}
+
+    <div class="relative overflow-hidden flex flex-col items-center md:items-start">
+        <span class="text-2xl text-center md:text-left">{name}</span>
+        <h2 class="text-primary-500 dark:text-teal-500 text-3xl md:text-4xl font-bold text-center md:text-left">{position}</h2>
+        <span class="mt-4 text-center md:text-left">{dateFrom} - {dateTo}</span>
+        <div class="flex flex-wrap justify-center md:justify-start gap-2 font-bold mt-4">
+            {stack.map(item => (
+                <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">{item}</span>
+            ))}
+        </div>
+        <p class="text-center md:text-left text-lg mt-4 opacity-70">{description}</p>
+    </div>
+</article>

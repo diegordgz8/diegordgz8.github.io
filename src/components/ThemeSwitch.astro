@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+    type="button"
+    role="switch"
+    aria-label="Cambiar tema"
+    class="dark-toggle relative inline-flex h-8 w-14 cursor-pointer items-center rounded-full bg-surface-300 transition-colors duration-300 dark:bg-teal-700"
+>
+    <span class="absolute left-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition-transform duration-300 dark:translate-x-6">
+        <Icon name="mdi:white-balance-sunny" class="h-4 w-4 text-yellow-500 dark:hidden" />
+        <Icon name="mdi:weather-night" class="hidden h-4 w-4 text-slate-300 dark:block" />
+    </span>
+</button>
+
+<script>
+    const setupTheme = () => {
+        document.querySelectorAll('.dark-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+    };
+
+    setupTheme();
+    document.addEventListener('astro:after-swap', setupTheme);
+</script>

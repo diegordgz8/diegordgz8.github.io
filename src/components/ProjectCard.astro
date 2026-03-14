@@ -1,0 +1,55 @@
+---
+import Image from 'astro/components/Image.astro';
+import type { ImageMetadata } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    name: string;
+    description: string;
+    slug: string;
+    stack: string[];
+    cover?: ImageMetadata;
+    link?: string;
+    pictures?: string;
+    github?: string;
+}
+
+const { name, description, slug, stack, cover, link, github } = Astro.props;
+---
+
+<article class="lg:hover:scale-105 transition-transform duration-500">
+    <div class="relative overflow-hidden">
+        {cover && <a href={`/portfolio/${ slug }`}><Image class="w-full object-cover object-top rounded-xl shadow-lg aspect-video" src={cover} alt={name} transition:name={`img-${slug}`} /></a>}
+        <div class="flex gap-2 absolute right-2 bottom-2">
+            {github && (
+                <a
+                class="bg-primary-500 rounded-full shadow-lg w-12 h-12 p-2"
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                    <Icon name="mdi:github" class="w-full h-full text-white" />
+                </a>
+            )}
+
+            {link && (
+                <a
+                class="grid place-content-center bg-primary-500 rounded-full shadow-lg w-12 h-12 p-2 text-center"
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                    <Icon name="mdi:link" class="w-6 h-6 text-white" />
+                </a>
+            )}
+        </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center lg:justify-start gap-2 font-bold mt-4">
+        {stack.map(item => (
+            <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">{item}</span>
+        ))}
+    </div>
+    <h2 class="text-3xl lg:text-4xl font-bold text-center lg:text-left mt-4">{name}</h2>
+    <p class="text-center lg:text-left text-lg lg:text-2xl mt-2 opacity-70">{description}</p>
+</article>
