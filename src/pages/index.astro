@@ -178,19 +178,31 @@ const projects = (await getCollection('projects')).sort(
     </section>
 
     <script>
-        const jobs = document.getElementById('jobs');
-        const ring = document.getElementById('hero-ring');
+        const setupRingObserver = () => {
+            const jobs = document.getElementById('jobs');
+            const ring = document.getElementById('hero-ring');
 
-        if (jobs && ring) {
-            const observer = new IntersectionObserver(
-                ([entry]) => {
+            if (jobs && ring) {
+                const updateRing = () => {
                     const isAboveJobs = jobs.getBoundingClientRect().top > 0;
-                    ring.style.opacity = !entry.isIntersecting && isAboveJobs ? '1' : '0';
-                },
-                { rootMargin: '0px 0px -30% 0px' },
-            );
+                    ring.style.opacity = isAboveJobs ? '1' : '0';
+                };
 
-            observer.observe(jobs);
-        }
+                updateRing();
+
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        const isAboveJobs = jobs.getBoundingClientRect().top > 0;
+                        ring.style.opacity = !entry.isIntersecting && isAboveJobs ? '1' : '0';
+                    },
+                    { rootMargin: '0px 0px -30% 0px' },
+                );
+
+                observer.observe(jobs);
+            }
+        };
+
+        setupRingObserver();
+        document.addEventListener('astro:after-swap', setupRingObserver);
     </script>
 </Layout>
