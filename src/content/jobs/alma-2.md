@@ -22,8 +22,8 @@ Como Technical Lead, superviso el ciclo completo de vida del software, liderando
 
 Logros clave:
 
-* Optimización de Procesos: Diseño y desarrollo actualmente un software de cotización, proyectado para reducir la carga administrativa manual en un 30%.
+- Optimización de Procesos: Diseño y desarrollo actualmente un software de cotización, proyectado para reducir la carga administrativa manual en un 30%.
 
-* Liderazgo y QA: Establecí flujos de trabajo eficientes y procesos de revisión de código (Code Review) para garantizar productos "pixel-perfect" y despliegues sin errores.
+- Liderazgo y QA: Establecí flujos de trabajo eficientes y procesos de revisión de código (Code Review) para garantizar productos "pixel-perfect" y despliegues sin errores.
 
-* Arquitectura de Sistemas: Responsable de la definición técnica y escalabilidad de nuevos proyectos, traduciendo requerimientos complejos de clientes en soluciones de software robustas.
+- Arquitectura de Sistemas: Responsable de la definición técnica y escalabilidad de nuevos proyectos, traduciendo requerimientos complejos de clientes en soluciones de software robustas.

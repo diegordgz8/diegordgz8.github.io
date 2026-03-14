@@ -18,8 +18,8 @@ Colaboré en el desarrollo integral del sistema de arbitraje SISTELAR, trabajand
 
 Logros clave:
 
-* Liderazgo Técnico Inicial: Dirigí la planificación y ejecución de funcionalidades críticas, supervisando el progreso técnico de otros miembros del equipo.
+- Liderazgo Técnico Inicial: Dirigí la planificación y ejecución de funcionalidades críticas, supervisando el progreso técnico de otros miembros del equipo.
 
-* Desarrollo Fullstack: Implementé lógica de negocio compleja en el backend y realicé cambios estructurales en la base de datos, asegurando un rendimiento óptimo.
+- Desarrollo Fullstack: Implementé lógica de negocio compleja en el backend y realicé cambios estructurales en la base de datos, asegurando un rendimiento óptimo.
 
-* Colaboración en Arquitectura: Participé activamente con el resto del equipo para idear y planificar soluciones técnicas que mejoraron la operatividad global del sistema.
+- Colaboración en Arquitectura: Participé activamente con el resto del equipo para idear y planificar soluciones técnicas que mejoraron la operatividad global del sistema.

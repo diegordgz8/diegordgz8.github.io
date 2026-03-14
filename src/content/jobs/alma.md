@@ -20,8 +20,8 @@ Responsable de la transformación de diseños complejos de Figma en interfaces w
 
 Logros clave:
 
-* Fidelity & Performance: Ejecución de maquetaciones "pixel-perfect" asegurando que el producto final fuera fiel al diseño original y optimizado para SEO y velocidad de carga.
+- Fidelity & Performance: Ejecución de maquetaciones "pixel-perfect" asegurando que el producto final fuera fiel al diseño original y optimizado para SEO y velocidad de carga.
 
-* Colaboración en Producto: Participé activamente en el rediseño y actualización de la plataforma "Chambeala", utilizando Laravel Blade para integrar vistas dinámicas con el backend.
+- Colaboración en Producto: Participé activamente en el rediseño y actualización de la plataforma "Chambeala", utilizando Laravel Blade para integrar vistas dinámicas con el backend.
 
-* Dominio de E-commerce: Implementé funcionalidades avanzadas y personalizaciones en sitios basados en WordPress y WooCommerce, adaptando el flujo de compra a las necesidades del cliente.
+- Dominio de E-commerce: Implementé funcionalidades avanzadas y personalizaciones en sitios basados en WordPress y WooCommerce, adaptando el flujo de compra a las necesidades del cliente.

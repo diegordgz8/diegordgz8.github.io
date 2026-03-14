@@ -20,8 +20,8 @@ Me desempeñé como desarrollador encargado de la maquetación y programación d
 
 Logros clave:
 
-* E-commerce Specialist: Desarrollé y maqueté temas personalizados desde cero para WordPress y Shopify, garantizando diseños responsivos y optimizados.
+- E-commerce Specialist: Desarrollé y maqueté temas personalizados desde cero para WordPress y Shopify, garantizando diseños responsivos y optimizados.
 
-* Implementación de Lógica: Programé funcionalidades a medida utilizando Shopify Liquid y realicé configuraciones avanzadas de plugins y lógica en WooCommerce.
+- Implementación de Lógica: Programé funcionalidades a medida utilizando Shopify Liquid y realicé configuraciones avanzadas de plugins y lógica en WooCommerce.
 
-* Gestión Técnica de Activos: Administré catálogos de productos y activos digitales complejos, asegurando la estabilidad técnica y operativa de las tiendas en línea.
+- Gestión Técnica de Activos: Administré catálogos de productos y activos digitales complejos, asegurando la estabilidad técnica y operativa de las tiendas en línea.
