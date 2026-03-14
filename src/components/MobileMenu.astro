@@ -8,7 +8,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
     id="mobile-menu-toggle"
     type="button"
     aria-label="Abrir menú"
-    class="text-primary-500 dark:text-surface-500 relative z-60 cursor-pointer lg:hidden"
+    class="text-surface-500 relative z-60 cursor-pointer lg:hidden"
 >
     <Icon id="menu-open-icon" name="mdi:menu" class="h-8 w-8" />
     <Icon id="menu-close-icon" name="mdi:close" class="hidden h-8 w-8" />
@@ -16,7 +16,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
 
 <div
     id="mobile-menu"
-    class="bg-primary-500/95 text-surface-500 fixed inset-0 left-auto z-50 flex w-full max-w-80 translate-x-full flex-col items-end justify-between gap-8 p-8 pt-24 text-xl font-semibold uppercase backdrop-blur-sm transition-transform duration-300 lg:hidden"
+    class="bg-primary-500/95 text-surface-500 fixed inset-0 left-auto z-50 flex h-dvh w-full max-w-80 translate-x-full flex-col items-end justify-between gap-8 p-8 pt-24 text-xl font-semibold uppercase backdrop-blur-sm transition-transform duration-300 lg:hidden"
 >
     <nav class="flex flex-col items-end gap-8 text-right">
         <NavLink href="/#hero" label="Inicio" />
@@ -55,6 +55,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
             menu.classList.remove('translate-x-0');
             openIcon.classList.remove('hidden');
             closeIcon.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
         };
 
         toggle.addEventListener('click', () => {
@@ -66,6 +67,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
                 menu.classList.add('translate-x-0');
                 openIcon.classList.add('hidden');
                 closeIcon.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
             }
         });
 
