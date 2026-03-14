@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { getImage, Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
-import { Image } from 'astro:assets';
 import Button from '../../components/Button.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import { Icon } from 'astro-icon/components';
@@ -20,9 +20,10 @@ const { data, slug } = project;
 const { name, description, cover, stack, link, pictures } = data;
 
 const { Content } = await render(project);
+const ogCover = cover ? (await getImage({ src: cover })).src : undefined;
 ---
 
-<Layout title={` ${name} - Proyectos `} description={`${description}`}>
+<Layout title={` ${name} - Proyectos `} description={description} image={ogCover}>
     <div class="container mt-4 flex flex-col justify-between gap-4 sm:flex-row lg:mt-20">
         <Button class="btn-outline" href="/#portfolio">
             <Icon name="mdi:arrow-left" class="h-6 w-6" />
