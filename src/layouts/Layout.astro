@@ -9,7 +9,10 @@ import { ClientRouter } from 'astro:transitions';
 const {
     title,
     description = 'Portafolio de Diego Rodríguez, Technical Lead especializado en PHP, Laravel y WordPress.',
+    image,
 } = Astro.props;
+
+const ogImage = new URL(image || '/og-image.webp', Astro.site).href;
 ---
 
 <!doctype html>
@@ -23,10 +26,12 @@ const {
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
         <ClientRouter />
 
         <script is:inline>
