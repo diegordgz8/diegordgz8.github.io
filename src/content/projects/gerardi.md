@@ -1,6 +1,6 @@
 ---
 name: Gerardi Studio
-description: Plataforma de cursos
+description: Plataforma LMS y Tienda Online desarrollada con Custom PHP/WordPress Theme, MasterStudy y WooCommerce. Una solución escalable para la venta de educación y productos digitales, optimizada para ofrecer una experiencia premium y fluida a cientos de alumnos.
 stack:
     - WordPress
     - MasterStudy LMS

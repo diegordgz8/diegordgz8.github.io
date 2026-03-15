@@ -1,6 +1,6 @@
 ---
 name: Bonsai Pricing Page
-description: Bonsai Pricing Page
+description: Replicación de interfaz profesional con enfoque en diseño responsivo y estados interactivos. Maquetación limpia usando Tailwind CSS y lógica frontend ligera con Alpine.js para la conmutación de planes y FAQ dinámicos. Un ejercicio de precisión UI y optimización de assets.
 stack:
     - HTML
     - Tailwind CSS

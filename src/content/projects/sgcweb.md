@@ -1,6 +1,6 @@
 ---
 name: SGC Web
-description: Sistema web de gestion de condominio
+description: Sistema web de gestión de condominios desarrollado con el TALL Stack. Un proyecto académico de alta complejidad que incluye módulos de pagos, cierres mensuales y comunicación interna. Enfocado en la reactividad de la interfaz con Livewire y una arquitectura de backend robusta en Laravel.
 stack:
     - Laravel
     - Livewire

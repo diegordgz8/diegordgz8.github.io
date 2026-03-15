@@ -1,6 +1,6 @@
 ---
 name: Portafolio Personal
-description: Mi sitio web portafolio construido con Astro 5 y Tailwind CSS 4
+description: Sitio web de alto rendimiento desarrollado con Astro. Enfocado en la optimización de assets, estética minimalista de terminal y arquitectura de componentes. Un proyecto que prioriza el SEO y la velocidad de carga mediante la generación de sitios estáticos (SSG).
 stack:
     - Astro
     - Tailwind CSS
