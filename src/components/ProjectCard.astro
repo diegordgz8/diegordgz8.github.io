@@ -60,13 +60,15 @@ const { name, description, slug, stack, cover, link, github } = Astro.props;
         </div>
     </div>
 
-    <div class="mt-4 flex flex-wrap justify-center gap-2 font-bold lg:justify-start">
+    <div class="mt-4 flex flex-wrap gap-2 font-bold">
         {
             stack.map((item) => (
-                <span class="bg-muted-500 rounded-full px-4 py-2 text-sm text-white">{item}</span>
+                <span class="bg-muted-500 rounded-full px-3 py-1 text-sm text-white md:px-4">
+                    {item}
+                </span>
             ))
         }
     </div>
-    <h2 class="mt-4 text-center text-3xl font-bold lg:text-left lg:text-4xl">{name}</h2>
-    <p class="mt-2 text-center text-lg opacity-70 lg:text-left lg:text-2xl">{description}</p>
+    <h2 class="mt-4 text-3xl font-bold lg:text-4xl">{name}</h2>
+    <p class="mt-2 opacity-70">{description}</p>
 </article>

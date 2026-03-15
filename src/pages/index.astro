@@ -40,7 +40,7 @@ const projects = (await getCollection('projects')).sort(
             </div>
 
             <div
-                class="flex max-w-300 flex-col items-center justify-center gap-x-8 gap-y-8 lg:items-start lg:gap-y-12"
+                class="flex max-w-250 flex-col items-center justify-center gap-x-8 gap-y-8 lg:items-start lg:gap-y-12"
             >
                 <div class="relative w-40 md:w-52 2xl:w-72">
                     <div
@@ -54,14 +54,12 @@ const projects = (await getCollection('projects')).sort(
                     />
                 </div>
 
-                <div
-                    class="flex flex-col items-center gap-2 text-center lg:items-start lg:text-left"
-                >
+                <div class="flex flex-col items-center gap-2 lg:items-start">
                     <h1 class="text-xl font-semibold uppercase sm:text-2xl lg:text-4xl">
                         Diego A. Rodríguez
                     </h1>
                     <p
-                        class="text-primary-500 text-3xl font-bold lg:text-4xl xl:text-5xl dark:text-teal-500"
+                        class="text-primary-500 text-center text-xl font-bold sm:text-3xl lg:text-left lg:text-4xl xl:text-5xl dark:text-teal-500"
                     >
                         Transformo ideas complejas en soluciones web de alto rendimiento
                     </p>
@@ -143,7 +141,7 @@ const projects = (await getCollection('projects')).sort(
                         <a
                             href="https://wa.me/584245458256"
                             target="_blank"
-                            class="flex items-center gap-3 rounded-xl bg-green-800 px-6 py-4 text-white transition-colors hover:bg-green-700"
+                            class="flex items-center gap-3 rounded-xl bg-green-800 px-4 py-4 text-white transition-colors hover:bg-green-700 md:px-6"
                         >
                             <Icon name="mdi:whatsapp" class="h-6 w-6" />
                             <span class="font-semibold">+58 424 545 8256</span>
@@ -151,7 +149,7 @@ const projects = (await getCollection('projects')).sort(
                         <a
                             href="https://linkedin.com/in/diegordgz8"
                             target="_blank"
-                            class="flex items-center gap-3 rounded-xl bg-[#0A66C2] px-6 py-4 text-white transition-colors hover:bg-[#004182]"
+                            class="flex items-center gap-3 rounded-xl bg-[#0A66C2] px-4 py-4 text-white transition-colors hover:bg-[#004182] md:px-6"
                         >
                             <Icon name="mdi:linkedin" class="h-6 w-6" />
                             <span class="font-semibold">LinkedIn</span>
@@ -159,7 +157,7 @@ const projects = (await getCollection('projects')).sort(
                         <a
                             href="https://github.com/diegordgz8"
                             target="_blank"
-                            class="bg-surface-dark-400 hover:bg-surface-dark-300 flex items-center gap-3 rounded-xl px-6 py-4 text-white transition-colors"
+                            class="bg-surface-dark-400 hover:bg-surface-dark-300 flex items-center gap-3 rounded-xl px-4 py-4 text-white transition-colors md:px-6"
                         >
                             <Icon name="mdi:github" class="h-6 w-6" />
                             <span class="font-semibold">GitHub</span>
