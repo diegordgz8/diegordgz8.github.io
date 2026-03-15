@@ -10,25 +10,16 @@ interface Skill {
 }
 
 const techs: Skill[] = [
-    { name: 'HTML', icon: 'mdi:language-html5', color: 'bg-orange-900', span: 'col-span-1' },
-    { name: 'CSS', icon: 'mdi:language-css3', color: 'bg-blue-900', span: 'col-span-1' },
-    {
-        name: 'JavaScript',
-        icon: 'mdi:language-javascript',
-        color: 'bg-amber-800',
-        span: 'col-span-2 sm:col-span-1',
-    },
-    { name: 'PHP', icon: 'mdi:language-php', color: 'bg-indigo-900', span: 'col-span-1' },
     { name: 'Laravel', icon: 'mdi:laravel', color: 'bg-red-900', span: 'col-span-2 row-span-2' },
+    { name: 'PHP', icon: 'mdi:language-php', color: 'bg-indigo-900', span: 'col-span-1' },
     { name: 'Livewire', svg: '/logos/livewire.svg', color: 'bg-pink-900', span: 'col-span-1' },
-    { name: 'Alpine.js', svg: '/logos/alpinejs.svg', color: 'bg-slate-800', span: 'col-span-1' },
     {
         name: 'Tailwind CSS',
         icon: 'mdi:tailwind',
         color: 'bg-sky-900',
         span: 'col-span-2 sm:col-span-1',
     },
-    { name: 'Bootstrap', icon: 'mdi:bootstrap', color: 'bg-violet-900', span: 'col-span-1' },
+    { name: 'Alpine.js', svg: '/logos/alpinejs.svg', color: 'bg-slate-800', span: 'col-span-1' },
     { name: 'Astro', svg: '/logos/astro.svg', color: 'bg-stone-800', span: 'col-span-1' },
     {
         name: 'WordPress',
@@ -38,24 +29,47 @@ const techs: Skill[] = [
     },
     { name: 'Elementor', svg: '/logos/elementor.svg', color: 'bg-rose-900', span: 'col-span-1' },
     { name: 'Crocoblock', svg: '/logos/crocoblock.svg', color: 'bg-teal-900', span: 'col-span-1' },
+    { name: 'HTML', icon: 'mdi:language-html5', color: 'bg-orange-900', span: 'col-span-1' },
+    { name: 'CSS', icon: 'mdi:language-css3', color: 'bg-blue-900', span: 'col-span-1' },
+    {
+        name: 'JavaScript',
+        icon: 'mdi:language-javascript',
+        color: 'bg-amber-800',
+        span: 'col-span-2 sm:col-span-1',
+    },
+    {
+        name: 'Gestión de Proyectos',
+        icon: 'mdi:clipboard-list',
+        color: 'bg-green-900',
+        span: 'col-span-2 row-span-2',
+    },
     { name: 'Trello', icon: 'mdi:trello', color: 'bg-blue-950', span: 'col-span-1' },
+    { name: 'Bootstrap', icon: 'mdi:bootstrap', color: 'bg-violet-900', span: 'col-span-1' },
 ];
 
 const knowledge = [
-    'Programación Orientada a Objetos (POO)',
-    'API RESTful',
-    'Diseño y Desarrollo de Base de Datos',
-    'Metodología Kanban',
-    'Inglés Intermedio',
+    'Análisis y Levantamiento de Requerimientos: Traduzco necesidades de negocio en especificaciones técnicas claras.',
+    'Arquitectura de Información y UX: Planificación de estructuras de datos y flujos de usuario antes de tocar una sola línea de código.',
+    'Gestión de Proyectos con Kanban: Control de tiempos y entregables para asegurar que el proyecto no se desvíe del presupuesto.',
+    'Consultoría Técnica: Evaluación de viabilidad para proyectos escalables (SaaS, LMS, E-commerce).',
+];
+
+const knowledge2 = [
+    'Desarrollo Web Full-Stack: Implementación robusta con Laravel o WordPress.',
+    'Optimización de Rendimiento (WPO): Sitios rápidos y eficientes para mejorar la conversión.',
+    'Integración de APIs y Automatización: Conexión de sistemas para optimizar procesos operativos.',
+    'Comunicación e Inglés Avanzado: Comunicación en entornos bilingües. Actualmente cursando el nivel superior para maestría total del idioma.',
 ];
 ---
 
-<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+<div class="flex flex-col gap-4 lg:flex-row">
     <!-- Knowledge card -->
     <div
-        class="bg-primary-500 text-surface-500 dark:bg-muted-800 dark:text-surface-400 col-span-2 row-span-2 flex flex-col justify-center gap-4 rounded-2xl p-6 sm:col-span-3 lg:col-span-2"
+        class="bg-primary-500 text-surface-500 dark:bg-muted-800 dark:text-surface-400 col-span-2 row-span-2 flex flex-col justify-center gap-4 rounded-2xl p-6 sm:col-span-3 lg:col-span-3"
     >
-        <h3 class="text-lg font-bold tracking-wide text-teal-500 uppercase">Conocimientos</h3>
+        <h3 class="text-xl font-bold tracking-wide text-teal-500 uppercase">
+            Gestión y Planificación
+        </h3>
         <ul class="flex flex-col gap-3">
             {
                 knowledge.map((item) => (
@@ -71,6 +85,30 @@ const knowledge = [
         </ul>
     </div>
 
+    <!-- Knowledge 2 card -->
+    <div
+        class="bg-primary-500 text-surface-500 dark:bg-muted-800 dark:text-surface-400 col-span-2 row-span-2 flex flex-col justify-center gap-4 rounded-2xl p-6 sm:col-span-3 lg:col-span-3"
+    >
+        <h3 class="text-xl font-bold tracking-wide text-teal-500 uppercase">
+            Desarrollo y Ejecución
+        </h3>
+        <ul class="flex flex-col gap-3">
+            {
+                knowledge2.map((item) => (
+                    <li class="flex items-start gap-2">
+                        <Icon
+                            name="mdi:lightbulb-on-outline"
+                            class="mt-0.5 h-5 w-5 shrink-0 text-teal-500"
+                        />
+                        <span>{item}</span>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="mt-8 grid grid-flow-dense grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
     <!-- Tech cards -->
     {
         techs.map((tech) => (
